@@ -1,0 +1,26 @@
+#header {
+    height: 50px;
+    background-color: #3f6b97;
+}
+
+#header .logo{
+    float: left;/*
+    width: 152px;
+    height: 50px;*/
+}
+
+#main {
+    margin-left: 233px;
+    margin-right: 20px;
+    min-height: 500px;
+    _height: 500px;
+}
+
+#footer {
+    margin: 50px 0;
+    text-align: center;
+}
+
+#footer a {
+    color: gray;
+}

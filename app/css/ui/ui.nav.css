@@ -1,0 +1,77 @@
+.top-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+    color: #75a8d8;
+}
+
+.top-nav .account-name {
+    color: #FFF;
+    margin: 0 8px; 
+}
+
+.top-nav a {
+    color: #b5d4f2;
+    padding: 0 8px;
+}
+
+.side-nav {
+    position: absolute;
+    width: 223px;
+}
+
+.side-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+.side-nav .nav li.selected {
+    background-color: #EA764F;
+    border-right: 4px solid #E3563A;
+}
+
+.side-nav .nav li.selected a {
+    color: white;
+    font-weight: bolder;
+}
+
+.side-nav .nav li a {
+    color: #6191D4;
+    display: inline-block;
+    height: 29px;
+    line-height: 29px;
+    padding-left: 30px;
+}
+
+.side-nav .nav li .open {
+    color: #0965B8;
+    font-weight: bolder;
+    padding-left: 20px;
+    display: block;
+    background-color: #e2edfb;
+    background-position: 203px 11px;
+    background-repeat: no-repeat;
+    background-image:  url(decorator/open.png);
+}
+
+.side-nav .nav li .close {
+    color: #0965B8;
+    font-weight: bolder;
+    padding-left: 20px;
+    display: block;
+    margin-bottom: 1px;
+    background-color: #e2edfb;
+    background-position: 203px 11px;
+    background-repeat: no-repeat;
+    background-image:  url(decorator/close.png);
+}
+
+.side-nav .nav li>a .ellipsis {
+    width: 182px;
+}
+
+.side-nav .nav ul>li>a .ellipsis{
+    width: 193px;
+}

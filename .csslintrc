@@ -1,0 +1,11 @@
+{
+    "box-sizing"                 : false,
+    "box-model"                  : false,
+    "display-property-grouping"  : false,
+    "star-property-hack"         : false,
+    "ids"                        : false,
+    "underscore-property-hack"   : false,
+    "adjoining-classes"          : false,
+    "gradients"                  : false,
+    "outline-none"               : false
+}

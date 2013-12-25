@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Backbone+Requirejs Bootstrap</title>
+        <meta name="viewport" content="width=device-width">
+        <link type="text/css" href="css/common.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="tmpst" class="tmpst">
+            <div style="position:absolute;top:0px;left:0px;width:100%;height:100%;background:#f5f5f5;padding-top:5%;">
+              <div>
+                <span id="loading-js" style="display: none; padding-left:45%">loading &nbsp;&nbsp;<img src="/img/loading.gif"></span>
+              </div>
+              <noscript><div id="loading-nojs" style="text-align:center; margin-bottom:10px;">Please use a modern browser with JavaScript enabled.</div></noscript>
+              </div>
+            </div>
+        </div>
+        <!--[if gte IE 8]>
+        <script>document.getElementById("loading-js").style.display = 'block';</script>
+        <![endif]--> 
+        <!--[if !IE]> -->
+        <script>document.getElementById("loading-js").style.display = 'block';</script>
+        <!-- <![endif]-->
+        <!-- build:js js/components.js -->
+        <script src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
+        <script type="text/javascript" data-baseurl="/" data-version="" data-timestamp='1369439732662' data-debug='0' id="_require">
+            if (document.getElementById("loading-js").style.display == 'block') {
+                (function (el) {
+                    /*
+                    //prevent throw errors
+                    require.onError = function(err) { 
+                        window._204 = window._204 || []; 
+                        window._204.push({key: 'requireErr', value: err});
+                    };
+                    */
+                    require.config({
+                        enforceDefine: true,
+                        waitSeconds: 14,
+                        baseUrl: el.getAttribute("data-baseurl"),
+                        urlArgs: el.getAttribute("data-debug") == "1" ? "v=" + el.getAttribute("data-timestamp") : "",
+                        shim: {
+                            "underscore": {
+                                exports: '_'
+                            },
+                            "backbone": {
+                                deps: ["underscore", "jquery"],
+                                exports: "Backbone",
+                                init: function (_, $) {
+                                    _.noConflict();
+                                    $.noConflict();
+                                    return Backbone.noConflict();
+                                }
+                            }
+                        },
+                        paths: {
+                            "jquery": "bower_components/jquery/jquery",
+                            "underscore": "bower_components/underscore/underscore",
+                            "backbone": "bower_components/backbone/backbone"
+                        },
+                        callback: function () {
+                            require(['pages/home/routes']); // bootup
+                        }
+                    });
+                })(document.getElementById("_require"));
+            }
+        </script>    
+    </body>  
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "backbone-requirejs-bootstrap-node",
+  "version": "1.0.0",
+  "description": "backend of bootstarp app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/starandtina/backbone-requirejs-bootstrap"
+  },
+  "keywords": [
+    "backbone",
+    "requirejs",
+    "bootstrap",
+    "node",
+    "backend",
+    "javascript"
+  ],
+  "author": "starandtina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/starandtina/backbone-requirejs-bootstrap/issues"
+  },
+  "devDependencies": {
+    "mongoose": "~3.8.1",
+    "express": "~3.4.4",
+    "cors": "~2.1.1",
+    "logan": "0.0.2"
+  }
+}

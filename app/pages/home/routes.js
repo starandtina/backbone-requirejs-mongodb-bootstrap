@@ -7,6 +7,10 @@ define([
     'js/models/user',
     'js/lib/popups',
     'js/lib/browser',
+    'js/lib/modals',
+    'js/lib/supports',
+    'js/lib/browser',
+    'js/lib/backbone.baseview',
     'js/lib/backbone.queryparams',
     'pages/home/template/page',
     'pages/home/template/header',
@@ -17,11 +21,18 @@ define([
     var routes = {};
     var homeUrl = Tmpst.config.dir.home.replace(/^\//, '');
 
-    routes[homeUrl] = function (args) {
+    routes[homeUrl] = routes[homeUrl + 'dashboard'] = function (args) {
         Tmpst.region.open({
             'pages/home/template/page': {
                 regions: {
-
+                    body: {
+                        'pages/home/dashboard/dashboardBody': {
+                            id: 'dashboard',
+                            initialize: {
+                                args: args
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -34,8 +45,8 @@ define([
                     body: {
                         'pages/home/about/aboutBody': {
                             id: 'about',
-                            defaults: {
-                                query: args
+                            initialize: { // it'll be as arguments to constructor of view
+                                id: 'about'
                             }
                         }
                     }

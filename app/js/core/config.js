@@ -2,11 +2,11 @@
     var config = {
         "environment": "production",
         "out": "js/core/config.js",
-        "log": "error",
-        "debug": false,
+        "log": "info",
+        "debug": true,
         "url": {
             "base": "",
-            "api": "http://localhost:3000/api"
+            "api": "/api"
         },
         "version": "1.0.0",
         "dir": {

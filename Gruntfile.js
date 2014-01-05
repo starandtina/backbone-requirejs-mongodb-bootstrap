@@ -5,7 +5,6 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 
-// # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
 // use this if you want to match all subfolders:
@@ -28,10 +27,6 @@ module.exports = function (grunt) {
             css: {
                 files: ['<%= appConfig.app %>/css/{,*/}*.css'],
                 tasks: ['concat:css']
-            },
-            neuter: {
-                files: ['<%= appConfig.app %>/js/{,*/}*.js'],
-                tasks: ['neuter', 'requirejs']
             },
             jade: {
                 files: ['<%= appConfig.app %>/**/*.jade'],
@@ -63,6 +58,12 @@ module.exports = function (grunt) {
                             require('connect-livereload')({
                                 port: LIVERELOAD_PORT
                             }),
+                            require('connect-modrewrite')(
+                                [
+                                    '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif$ /index.html [L]',
+                                    '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
+                                ]
+                            ),
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, appConfig.app)
                         ];
@@ -83,6 +84,12 @@ module.exports = function (grunt) {
                 options: {
                     middleware: function (connect, dist) {
                         return [
+                            require('connect-modrewrite')(
+                                [
+                                    '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif$ /index.html [L]',
+                                    '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
+                                ]
+                            ),
                             mountFolder(connect, appConfig.dist)
                         ];
                     }
@@ -100,8 +107,7 @@ module.exports = function (grunt) {
                     dot: true,
                     src: [
                         '.tmp',
-                        '<%= appConfig.dist %>/*',
-                        '!<%= appConfig.dist %>/.git*'
+                        '<%= appConfig.dist %>'
                     ]
                 }]
             },
@@ -153,9 +159,9 @@ module.exports = function (grunt) {
                         '<%= appConfig.app %>/css/base/reset.css',
                         '<%= appConfig.app %>/css/base/base.css',
                         '<%= appConfig.app %>/css/base/layout.css',
-                        '<%= appConfig.app %>/css/base/pure.css',
+                        '<%= appConfig.app %>/bower_components/pure/pure.css',
                         '<%= appConfig.app %>/css/ui/**/*.css',
-                        '<%= appConfig.app %>/css/base/tmpst.css',
+                        '<%= appConfig.app %>/css/base/tmpst.css'
                     ]
                 }
             }
@@ -275,34 +281,6 @@ module.exports = function (grunt) {
                 'htmlmin'
             ]
         },
-        karma: {
-            e2e: {
-                configFile: 'karma-e2e.conf.js',
-                singleRun: true
-            },
-            unit: {
-                configFile: 'karma.conf.js',
-                runnerPort: 9876,
-                browsers: ['PhantomJS'],
-                singleRun: true
-            },
-            server: {
-                configFile: 'karma.conf.js',
-                singleRun: false,
-                autoWatch: true
-            }
-        },
-        neuter: {
-            app: {
-                options: {
-                    filepathTransform: function (filepath) {
-                        return 'app/' + filepath;
-                    }
-                },
-                src: '<%= appConfig.app %>/js/app.js',
-                dest: '<%= appConfig.tmp %>/js/combined-js.js'
-            }
-        },
         uglify: {
             options: {
                 mangle: false
@@ -410,8 +388,7 @@ module.exports = function (grunt) {
             // output the result to stdout
             console: {
                 src: [
-                    '<%= appConfig.app %>/css/**/*.css',
-                    '!<%= appConfig.app %>/css/base/pure.css'
+                    '<%= appConfig.app %>/css/**/*.css'
                 ]
             },
             // output the result to formatters
@@ -426,8 +403,7 @@ module.exports = function (grunt) {
                     }]
                 },
                 src: [
-                    '<%= appConfig.app %>/css/**/*.css',
-                    '!<%= appConfig.app %>/css/base/pure.css'
+                    '<%= appConfig.app %>/css/**/*.css'
                 ]
             }
         },
@@ -459,25 +435,19 @@ module.exports = function (grunt) {
         'clean:server',
         'concurrent:test',
         'connect:test',
-        'neuter:app',
-        //'karma:unit',
         'notify:test'
     ]);
 
     grunt.registerTask('test-keep-alive', [
         'clean:server',
         'concurrent:test',
-        'connect:test',
-        'neuter:app'
-        //'karma:server'
+        'connect:test'
     ]);
 
     grunt.registerTask('test-e2e', [
         'clean:server',
         'concurrent:server',
-        'neuter:app',
         'connect:livereload'
-        //'karma:e2e'
     ]);
 
     grunt.registerTask('build', [
@@ -485,7 +455,6 @@ module.exports = function (grunt) {
         'useminPrepare',
         'copy',
         'concurrent:dist',
-        'neuter:app',
         'concat',
         'cssmin',
         'uglify',

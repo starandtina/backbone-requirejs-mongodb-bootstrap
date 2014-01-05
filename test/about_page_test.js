@@ -1,7 +1,8 @@
 describe('about pages', function () {
     var chai = require('chai');
+    var should = chai.should();
     var path = require('path');
-    var testDir = path.resolve(__dirname, '..');
+    var testDir = path.resolve(__dirname, '.');
     var env = require(path.join(testDir, 'lib', 'environment'));
     var fs = require('fs');
 
@@ -23,7 +24,7 @@ describe('about pages', function () {
             var body = new aboutBody();
             var view = body.render();
             
-            chai.expect(document.title).to.be.equal('About Us');
+            document.title.should.to.be.equal('About Us');
         });
     });
 });

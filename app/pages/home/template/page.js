@@ -46,7 +46,7 @@ define([
             });
         },
         hasUnsavedModel: function () {
-            return 1;
+            return false;
         }
     });
 

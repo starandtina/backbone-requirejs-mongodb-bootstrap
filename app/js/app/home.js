@@ -5,7 +5,7 @@ define([
     'js/core/tmpst',
     'js/lib/api',
     'js/lib/asyncMessages'
-], function ($, _, Backbone, Tmpst, API, asyncMessages, User) {
+], function ($, _, Backbone, Tmpst, API, asyncMessages) {
     'use strict';
 
     // add async message

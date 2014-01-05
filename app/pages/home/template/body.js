@@ -1,14 +1,15 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function ($, _, Backbone) {
+    'backbone',
+    'js/lib/backbone.baseview'
+], function ($, _, Backbone, BaseView) {
     'use strict';
 
-    var BodyView = Backbone.View.extend({
+    var BodyView = BaseView.extend({
         name: 'body',
         attributes: {
-            role: ''
+            role: 'body'
         },
         id: 'body',
         className: 'body pure-u-1'

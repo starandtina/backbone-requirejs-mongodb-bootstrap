@@ -3,7 +3,7 @@ describe('models', function () {
     var expect = chai.expect;
     var should = chai.should();
     var path = require('path');
-    var testDir = path.resolve(__dirname, '..');
+    var testDir = path.resolve(__dirname, '.');
     var env = require(path.join(testDir, 'lib', 'environment'));
     var fs = require('fs');
 
@@ -17,7 +17,7 @@ describe('models', function () {
     beforeEach(function () {
         browser = env.browser(staticDir);
         Tmpst = browser.require('js/app/home');
-        sinon = browser.require('sinon');
+        sinon = browser.require('js/lib/sinon');
         _ = browser.require('underscore');
     });
 

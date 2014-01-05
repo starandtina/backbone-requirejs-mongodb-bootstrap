@@ -1,7 +1,6 @@
 (function (wndw) {
 var jadify = function (jade) {
-return function anonymous(locals
-/**/) {
+return function anonymous(locals) {
 var buf = [];
 buf.push("<div class=\"logo\"><h1>Here is your Logo</h1></div><div class=\"top-nav user\"></div>");;return buf.join("");
 }

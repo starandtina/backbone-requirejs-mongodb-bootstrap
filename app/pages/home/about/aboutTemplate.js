@@ -1,4 +1,8 @@
-define(["pages/home/template/body", "js/app/home", "pages/home/about/aboutTemplate.html"], function (BodyView, h, jade) {
+define([
+    'pages/home/template/body',
+    'js/app/home',
+    'pages/home/about/aboutTemplate.html'
+], function (BodyView, Tmpst, AboutTpl) {
     return BodyView.extend({
         contentTemplate: null,
         contentTitle: null,
@@ -8,11 +12,11 @@ define(["pages/home/template/body", "js/app/home", "pages/home/about/aboutTempla
         },
         render: function () {
             var context = {
-                config: h.config
+                config: Tmpst.config
             };
 
-            this.$el.html(jade(context));
-            this.$el.find(".about-body").html(this.contentTemplate(context));
+            this.$el.html(AboutTpl(context));
+            this.$el.find('.about-body').html(this.contentTemplate(context));
 
             return this;
         }

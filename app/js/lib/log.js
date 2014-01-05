@@ -36,7 +36,7 @@
             return this;
         };
 
-        Logger.prototype.error = function () {ßßßßß
+        Logger.prototype.error = function () {
             if (/error|warn|info/.test(this.options.level)) {
                 wndw.console.error.apply(wndw.console, arguments);
             }

@@ -1,8 +1,8 @@
 {
-  "name": "backbone-requirejs-bootstrap-node",
+  "name": "backbone-requirejs-mongodb-bootstrap-node",
   "version": "1.0.0",
-  "description": "backend of bootstarp app",
-  "main": "app.js",
+  "description": "backend of backbone-requirejs-mongodb-bootstrap app",
+  "main": "./server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

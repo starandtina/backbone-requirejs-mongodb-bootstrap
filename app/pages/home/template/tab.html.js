@@ -2,8 +2,7 @@
 var jadify = function (jade) {
 return function anonymous(locals) {
 var buf = [];
-var tabItems = tabItems || [{id: '1', url: '/services', label: 'Services'}, {url: '/admin', label: 'Admin', id: '2'}]
-var currentTabId = '1'
+var locals_ = (locals || {}),currentTabId = locals_.currentTabId;var tabItems = [{id: '1', url: '/dashboard', label: 'Dashboard', 'icon': 'dashboard'}, {url: '/vms', label: 'Virtual Machines', id: '2', 'icon': 'bookmark'}, {url: '/gws', label: 'Gateways', id: '3', 'icon': 'bookmark'}, {url: '/services', label: 'Services', id: '4', 'icon': 'bookmark'}]
 buf.push("<div class=\"ui-tab\"><ul class=\"tab-list\">");
 // iterate tabItems
 ;(function(){
@@ -15,11 +14,11 @@ buf.push("<div class=\"ui-tab\"><ul class=\"tab-list\">");
 
 if ( currentTabId == tab.id)
 {
-buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab-on'),('tab')] }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
+buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab-on'),('tab')] }, {"href":true})) + "><i" + (jade.attrs({ "class": [("fa fa-" + (tab.icon) + "")] }, {"class":true})) + "></i>" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
 }
 else
 {
-buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab')] }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
+buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab')] }, {"href":true})) + "><i" + (jade.attrs({ "class": [("fa fa-" + (tab.icon) + "")] }, {"class":true})) + "></i>" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
 }
     }
 
@@ -30,11 +29,11 @@ buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""
 
 if ( currentTabId == tab.id)
 {
-buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab-on'),('tab')] }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
+buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab-on'),('tab')] }, {"href":true})) + "><i" + (jade.attrs({ "class": [("fa fa-" + (tab.icon) + "")] }, {"class":true})) + "></i>" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
 }
 else
 {
-buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab')] }, {"href":true})) + ">" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
+buf.push("<li class=\"tab-unit\"><a" + (jade.attrs({ 'href':("" + (tab.url) + ""), "class": [('tab')] }, {"href":true})) + "><i" + (jade.attrs({ "class": [("fa fa-" + (tab.icon) + "")] }, {"class":true})) + "></i>" + (jade.escape(null == (jade.interp = tab.label) ? "" : jade.interp)) + "</a></li>");
 }
     }
 

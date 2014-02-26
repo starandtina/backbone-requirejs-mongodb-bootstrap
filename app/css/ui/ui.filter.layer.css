@@ -1,0 +1,139 @@
+.layer {
+    position: absolute;
+}
+
+.layer-trigger-label {
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    margin-right: 5px;
+}
+
+.layer-wrapper {
+    position: relative;
+}
+
+.layer-trigger {
+    position: relative;
+    height: 22px;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.layer-trigger:hover {
+    border: 1px solid #999;
+}
+
+.layer-trigger .text {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 7px;
+    width: 215px;
+}
+
+.layer-trigger .trigger {
+    cursor: pointer;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    width: 22px;
+}
+
+.filter-layer-operation {
+    margin: 10px 0 0 10px;
+}
+
+.filter-layer-operation .button {
+    margin-right: 15px;
+}
+
+.filter-layer {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    padding: 10px 0;
+    border: 1px solid #999;
+    background-color: #FFF;
+    line-height: 1.5;
+}
+
+.filter-layer-content {
+    padding: 0 10px;
+    width: 143px;
+}
+
+.filter-layer .level-1 {
+    color: #000;
+    padding: 6px 10px;
+    background-color: #F1F1F1;
+}
+
+.filter-layer .ul li {
+    overflow: hidden;
+    padding: 0 10px;
+    line-height: 26px;
+    _overflow: visible;
+    _zoom: 1;
+}
+
+.filter-layer .ul .sub-ul li{
+    color: #000;
+    float: left;
+    padding: 0;
+    width: 65px;
+    border: none;
+}
+
+.filter-layer .even {
+    background-color: #F9F9F9;
+}
+
+.filter-layer .level-2 {
+    margin-right: 2px;
+    width: 88px;
+    color: #666;
+}
+
+.filter-layer .check-all {
+    padding: 0 20px 10px 20px;
+    border-bottom: 1px solid #E9E9E9;
+}
+
+.filter-layer .ul li:hover,
+.filter-layer .level-1:hover {
+    background-color: #E9F3FF;
+}
+
+b {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    border-width: 4px;
+    border-style: solid dashed dashed;
+    border-color: #666666 transparent transparent;
+    font-size: 0;
+    line-height: 0;
+    cursor: pointer;
+    -webkit-transition: -webkit-transform .2s ease-in;
+    -moz-transition:-moz-transform .2s ease-in;
+    -o-transition:-o-transform .2s ease-in;
+    transition:transform .2s ease-in;
+}
+
+.layer-trigger-selected b {
+    top: 6px\9;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transform-origin: 50% 30%;
+    -moz-transform-origin: 50% 30%;
+    -o-transform-origin: 50% 30%;
+    transform-origin: 50% 30%;
+}

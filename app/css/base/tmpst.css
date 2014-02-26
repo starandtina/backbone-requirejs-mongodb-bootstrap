@@ -64,6 +64,10 @@
     *zoom: 1;
 }
 
+.mt20 {
+    margin-top: 20px;
+}
+
 .nopl {
     padding-left: 0;
 }
@@ -71,6 +75,12 @@
 menu, ol, ul {
     margin: 0;
     padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 48rem;
+    width: 90%;
 }
 
 .tmpst-header-popup {
@@ -94,6 +104,7 @@ menu, ol, ul {
     color: #717171;
     line-height: 1.5;
 }
+
 .tmpst-header-popup a:hover,.tmpst-header-popup a:focus {
     color: #fff;
     background-color: #3a6e8f;
@@ -112,3 +123,54 @@ menu, ol, ul {
     -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
     filter: alpha(opacity=75);
 }
+
+.services .label {
+    font-size: 24px;
+}
+
+.services .select {
+    width: 100%;
+}
+
+.services .input-combobox {
+    width: 400px;
+}
+
+.services .input-combobox .text {
+    width: 393px;
+}
+
+.services .pure-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.services .pure-table td:first-child {
+    width: 130px;
+}
+
+
+i {
+    margin-right: 10px;
+}
+
+.table .number-column {
+    width: 1em;
+    color: red;
+    text-align: center;
+}
+
+.table .checkbox-column {
+    width: 1em;
+}
+
+.table .operation-column {
+    border-left: 1px solid #E5E5E5;
+}
+
+.table .operation-column .button {
+    margin-right: 3px;
+}
+
+
+

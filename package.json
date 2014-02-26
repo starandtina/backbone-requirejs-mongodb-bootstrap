@@ -37,7 +37,10 @@
     "requirejs": "~2.1.9",
     "sinon": "~1.7.3",
     "resolve": "~0.5.1",
-    "mocha": "~1.16.2"
+    "mocha": "~1.16.2",
+    "grunt-newer": "~0.6.1",
+    "grunt-autoprefixer": "~0.6.5",
+    "grunt-express": "~1.2.1"
   },
   "peerDependencies": {
     "grunt-cli": "~0.1.9"

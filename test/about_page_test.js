@@ -1,30 +1,31 @@
 describe('about pages', function () {
-    var chai = require('chai');
-    var should = chai.should();
-    var path = require('path');
-    var testDir = path.resolve(__dirname, '.');
-    var env = require(path.join(testDir, 'lib', 'environment'));
-    var fs = require('fs');
+  'use strict';
 
-    var appDir = path.resolve(testDir, '..');
-    var Tmpst;
-    var browser;
-    var server;
-    var _;
+  var chai = require('chai');
+  var path = require('path');
+  var testDir = path.resolve(__dirname, '.');
+  var env = require(path.join(testDir, 'lib', 'environment'));
 
-    beforeEach(function () {
-        browser = env.browser(appDir);        
-        Tmpst = browser.require('js/app/home');
-        _ = browser.require('underscore');
+  var appDir = path.resolve(testDir, '..');
+  var Tmpst;
+  var browser;
+  var _;
+
+  chai.should();
+  beforeEach(function () {
+    browser = env.browser(appDir);
+    Tmpst = browser.require('js/app/home');
+    _ = browser.require('underscore');
+  });
+
+  describe('aboutBody', function () {
+    it('about page content', function () {
+      var AboutBody = browser.require('pages/home/about/aboutBody');
+      var body = new AboutBody();
+
+      body.render();
+
+      document.title.should.to.be.equal('About Us');
     });
-
-    describe('aboutBody', function () {
-        it('about page content', function () {
-            var aboutBody = browser.require('pages/home/about/aboutBody');
-            var body = new aboutBody();
-            var view = body.render();
-            
-            document.title.should.to.be.equal('About Us');
-        });
-    });
+  });
 });

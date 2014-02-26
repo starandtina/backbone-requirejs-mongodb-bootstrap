@@ -5,6 +5,6 @@ logan.set({
   success: ['%', 'green'],
   info: ['%', 'grey'],
   url: ['  http://localhost:%/'.grey + '%'.cyan, '.']
-})
+});
 
-module.exports = logan
+module.exports = logan;

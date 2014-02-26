@@ -1,25 +1,21 @@
 {
-    "camelcase": true,
-    "curly": true,
-    "eqeqeq": true,
-    "immed": true,
-    "latedef": true,
-    "newcap": false,
-    "noarg": true,
-    "sub": true,
-    "undef": true,
-    "boss": true,
-    "eqnull": true,
-    "jquery": true,
-    "node": true,
-    "browser": true,
-    "devel": false,
-    "globals": {
-        "jQuery": true,
-        "define": true,                    
-        "describe": true,
-        "beforeEach": true,
-        "afterEach": true,
-        "it": true
-    }
+  "camelcase": true,
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": false,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "boss": true,
+  "eqnull": true,
+  "jquery": true,
+  "node": true,
+  "browser": true,
+  "devel": false,
+  "globals": {
+    "jQuery": true,
+    "define": true
+  }
 }

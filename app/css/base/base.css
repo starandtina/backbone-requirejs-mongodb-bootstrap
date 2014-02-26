@@ -2,6 +2,7 @@
     Base css override default browser styles
 */
 body {
+    color: #333;
     font-size: 12px;
     font-family: "Helvetica Neue", "Helvetica", "Arial", "Varela", sans-serif;
     min-width: 1000px;
@@ -15,10 +16,6 @@ a {
 
 a:hover {
     text-decoration: underline; 
-}
-
-th {
-    text-align: left; 
 }
 
 select, input {

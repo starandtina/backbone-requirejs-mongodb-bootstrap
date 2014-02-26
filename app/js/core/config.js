@@ -6,7 +6,7 @@
         "debug": true,
         "url": {
             "base": "",
-            "api": "/api"
+            "api": "http://localhost:3001/api"
         },
         "version": "1.0.0",
         "dir": {

@@ -3,6 +3,8 @@ define([
     'js/app/home',
     'pages/home/about/aboutTemplate.html'
 ], function (BodyView, Tmpst, AboutTpl) {
+    'use strict';
+
     return BodyView.extend({
         contentTemplate: null,
         contentTitle: null,

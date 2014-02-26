@@ -38,7 +38,24 @@ define([
         });
     };
 
-    routes[homeUrl + 'about'] = function (args) {
+    routes[homeUrl + 'services'] = function () {
+        Tmpst.region.open({
+            'pages/home/template/page': {
+                regions: {
+                    body: {
+                        'pages/home/services/servicesBody': {
+                            id: 'services',
+                            initialize: {
+                                id: 'services'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    };
+
+    routes[homeUrl + 'about'] = function () {
         Tmpst.region.open({
             'pages/home/template/page': {
                 regions: {

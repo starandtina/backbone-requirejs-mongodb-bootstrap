@@ -5,6 +5,8 @@ define([
     'js/app/home',
     'pages/home/template/page.html'
 ], function ($, _, Backbone, Tmpst, PageTpl) {
+    'use strict';
+
     // The Page
     // ---------------
 

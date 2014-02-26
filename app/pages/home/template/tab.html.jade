@@ -1,12 +1,15 @@
-- var tabItems = tabItems || [{id: '1', url: '/services', label: 'Services'}, {url: '/admin', label: 'Admin', id: '2'}]
-- var currentTabId = '1'
+- var tabItems = [{id: '1', url: '/dashboard', label: 'Dashboard', 'icon': 'dashboard'}, {url: '/vms', label: 'Virtual Machines', id: '2', 'icon': 'bookmark'}, {url: '/gws', label: 'Gateways', id: '3', 'icon': 'bookmark'}, {url: '/services', label: 'Services', id: '4', 'icon': 'bookmark'}]
 
 .ui-tab
     ul.tab-list
         each tab in tabItems
             if currentTabId == tab.id
                 li.tab-unit
-                    a.tab-on.tab(href="#{tab.url}")= tab.label
+                    a.tab-on.tab(href="#{tab.url}")
+                      i(class="fa fa-#{tab.icon}")
+                      = tab.label
             else
                 li.tab-unit
-                    a.tab(href="#{tab.url}")= tab.label
+                    a.tab(href="#{tab.url}")
+                      i(class="fa fa-#{tab.icon}")
+                      = tab.label

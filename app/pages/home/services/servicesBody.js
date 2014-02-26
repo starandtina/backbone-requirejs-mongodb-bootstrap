@@ -3,9 +3,9 @@ define([
     'underscore',
     'backbone',
     'js/lib/backbone.widgetview',
-    'pages/home/dashboard/dashboardBody.html',
+    'pages/home/services/servicesBody.html',
     'pages/home/template/tab.html'
-], function ($, _, Backbone, WidgetView, DashboardTpl, TabTpl) {
+], function ($, _, Backbone, WidgetView, servicesTpl, TabTpl) {
     'use strict';
 
     var BodyView = WidgetView.extend({
@@ -22,24 +22,11 @@ define([
             WidgetView.prototype.initialize.call(this, arguments);
         },
         render: function () {
-            this.$el.html(DashboardTpl());
+            this.$el.html(servicesTpl());
             this.$(this.dom.TABS).html(TabTpl({
-                currentTabId: 1,
-                tabItems: []
+                currentTabId: 4
             }));
 
-            /*
-            this.changeWidgetState({
-                'page_num': 1111
-            });
-            this.addWidgetStateListener();
-            this.bind('widget:changed', function (changedParams) {
-                if (_.contains(changedParams, 'page_num')) {
-                    var pageNum = this.getWidgetState('page_num');
-                    console.log(pageNum)
-                }
-            });
-*/
             return this;
         }
     });

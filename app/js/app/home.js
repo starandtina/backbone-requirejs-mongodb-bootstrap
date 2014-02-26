@@ -25,15 +25,15 @@ define([
     });
 
     // add fetching and fetched callback and show the loading message using ayncMessage component
-    Tmpst.on("region:fetching", function (region) {
-        Tmpst.message.add($("<div>loading page</div>")
-            .addClass("waiting"), {
+    Tmpst.on('region:fetching', function (region) {
+        Tmpst.message.add($('<div>loading page</div>')
+            .addClass('waiting'), {
                 id: region.name + region.uid
             }
         );
     });
 
-    Tmpst.on("region:fetched", function (region) {
+    Tmpst.on('region:fetched', function (region) {
         Tmpst.message.remove(region.name + region.uid);
     });
 

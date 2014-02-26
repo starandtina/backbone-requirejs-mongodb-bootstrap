@@ -4,9 +4,8 @@ define([
     'backbone',
     'js/app/home',
     'pages/home/template/header.html',
-    'pages/home/user/user.html',
-    'js/models/user'
-], function ($, _, Backbone, Tmpst, HeaderTemplate, UserTemplate, UserModel) {
+    'pages/home/user/user.html'
+], function ($, _, Backbone, Tmpst, HeaderTemplate, UserTemplate) {
     'use strict';
 
     return Backbone.View.extend({

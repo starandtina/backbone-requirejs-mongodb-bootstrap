@@ -1,0 +1,25 @@
+.readme {
+  position:relative;
+  display: none;
+  padding:10px 40px 9px 20px;
+  background:#2e56b1;
+  color:#fff;
+}
+
+.readme a,
+.readme a:visited:not(.btn) {
+  color:#deba77;
+  text-decoration:none;
+}
+
+.readme a:hover,
+.readme a:focus {
+  text-decoration:underline;
+}
+
+.readme .readme-close-icon {
+  position:absolute;
+  top:10px;
+  right:20px;
+  cursor:pointer;
+}

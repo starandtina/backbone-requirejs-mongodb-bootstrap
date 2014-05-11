@@ -14,6 +14,7 @@ describe('about pages', function () {
   chai.should();
   beforeEach(function () {
     browser = env.browser(appDir);
+    //console.dir(browser.require('js/models/user.json'));
     Tmpst = browser.require('js/app/home');
     _ = browser.require('underscore');
   });

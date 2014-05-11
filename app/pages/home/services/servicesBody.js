@@ -1,35 +1,83 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'js/lib/backbone.widgetview',
-    'pages/home/services/servicesBody.html',
-    'pages/home/template/tab.html'
-], function ($, _, Backbone, WidgetView, servicesTpl, TabTpl) {
-    'use strict';
+  'jquery',
+  'underscore',
+  'backbone',
+  'js/lib/util',
+  'js/collections/instances',
+  'js/views/instance',
+  'pages/home/services/servicesBody.html',
+  'pages/home/template/body',
+  'pages/home/template/tab.html'
+], function ($, _, Backbone, Util, InstanceList, InstanceView, ServicesTpl, BodyView, TabTpl) {
+  'use strict';
 
-    var BodyView = WidgetView.extend({
-        dom: {
-            TABS: '[data-js-ui-tabs]'
-        },
-        name: 'body',
-        attributes: {
-            role: 'body'
-        },
-        id: 'body',
-        className: 'body pure-u-r',
-        initialize: function () {
-            WidgetView.prototype.initialize.call(this, arguments);
-        },
-        render: function () {
-            this.$el.html(servicesTpl());
-            this.$(this.dom.TABS).html(TabTpl({
-                currentTabId: 4
-            }));
+  var ServiceBodyView = BodyView.extend({
+    dom: {
+      TABS: '[data-js-ui-tabs]',
+      CREATE_INSTANCE: '.create-instance',
+      INSTANCE_CONTAINER: '#instances-container .row-group',
+      FORM: '#instance-form'
+    },
+    initialize: function () {
+      BodyView.prototype.initialize.call(this, arguments);
 
-            return this;
+      // act as internal anchor,  pass the "section" into the view, and use JS to jump to that part of the view, post-rendering
+      var that = this;
+      this.bind("view:merged", function (options) {
+        if (options && options.section) {
+          Util.scrollToInternalLink(that.$el, options.section);
+        } else {
+          window.scrollTo(0, 0);
         }
-    });
+      });
 
-    return BodyView;
+      this.instanceList = new InstanceList();
+
+      this.listenTo(this.instanceList, 'add', this.addOne);
+      this.listenTo(this.instanceList, 'reset', this.addAll);
+
+      this.instanceList.fetch();
+    },
+    render: function () {
+      this.$el.html(ServicesTpl());
+      this.$(this.dom.TABS).html(TabTpl({
+        currentTabId: 4
+      }));
+
+      return this;
+    },
+    events: function () {
+      var events = {};
+
+      events['click ' + this.dom.CREATE_INSTANCE] = 'onCreateInstance';
+
+      return events;
+    },
+    addOne: function (instance, collection) {
+      var index = ~~collection.models.indexOf(instance);
+      var view = new InstanceView({
+        model: instance
+      });
+
+      this.$(this.dom.INSTANCE_CONTAINER).append(view.render({
+        index: ++index
+      }).el);
+    },
+    addAll: function () {
+      this.InstanceList.each(this.addOne, this);
+    },
+    onCreateInstance: function () {
+      var attrs = {};
+      _.each(this.$(this.dom.FORM).serializeArray(), function (item) {
+        attrs[item.name] = item.value;
+      });
+
+      this.instanceList.create(attrs, {
+        wait: true,
+        validate: true // make validate method is called before **set**
+      });
+    }
+  });
+
+  return ServiceBodyView;
 });

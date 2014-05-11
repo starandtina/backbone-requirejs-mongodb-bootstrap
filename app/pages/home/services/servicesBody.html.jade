@@ -1,66 +1,40 @@
 .container
-  .tabs.mt20(data-js-ui-tabs)
-  .pure-u-1.services
-    h3.label CREATE A DATABASE
-    table.table.pure-table.pure-table-horizontal
-      tbody
-        tr
-          td TYPE
-          td
-            select.select
-              option MySQL 5.6
-              option MS SQL 2012
-        tr
-          td SIZE
-          td
-            select.select
+  .pure-u-1.tmpst-full-canvas
+    .tabs.mt20(data-js-ui-tabs)
+    div
+      h3.label(data-section="create") CREATE A DATABASE
+      form#instance-form.pure-form.pure-form-aligned
+        fieldset
+          .pure-control-group
+            label(for="type") TYPE
+            select.pure-input-2-3(name="type", id="type")
+                  option MySQL 5.6
+                  option MSSQL 2012
+          .pure-control-group
+            label(for="DESCRIPTION") DESCRIPTION
+            select.pure-input-2-3(name="description", id="description")
               option Basic: Dedicate server, shared VM, 256MB memory, 2560MB storage, 30 connections
-        tr
-          td DB ALIAS
-          td
-            .input-combobox.layer-trigger
-              input.text.ellipsis(placeholder="DB ALIAS", maxlength="32")
-        tr
-          td LOGIN PASSWORD
-          td
-            .input-combobox.layer-trigger
-              input.text.ellipsis(placeholder="password", maxlength="32")
-        tr
-          td CONFIRM PASSWORD
-          td
-            .input-combobox.layer-trigger
-              input.text.ellipsis(placeholder="confirm password", maxlength="32")
-        tr
-          td
-          td
-            a.pure-button.pure-button-active
-              i.fa.fa-plus 
-              | CREATE
-
-    h3.label MY DATABASES
-    table.table.pure-table.pure-table-horizontal
-      thead
-        th.checkbox-column
-          input(type="checkbox")
-        th.number-column
-        th DB
-        th Version
-        th Plan
-        th Created
-        th(align="center", width="350px") Operations
-      tbody
-        td.checkbox-column
-          input(type="checkbox")
-        td.number-column 1
-        td(title="")
-          .ellipsis.item-content Steve's DB
-        td(title="")
-          .ellipsis.item-content MSSQL 2012
-        td(title="")
-          .ellipsis.item-content Basic
-        td(title="")
-          .ellipsis.item-content 2/18/2014
-        td.operation-column(align="center")
-          a.button.pure-button BACKUP
-          a.button.pure-button DELETE
-          a.button.pure-button CHANGE PASSWORD
+          .pure-control-group
+            label(for="database") DB
+            input.pure-input-1-3(type="text", placeholder="DB", name="database", id="database")
+          .pure-control-group
+            label(for="password") LOGIN PASSWORD
+            input.pure-input-1-3(type="password", placeholder="LOGIN PASSWORD", name="password", id="password")
+          .pure-control-group
+            label(for="password-repeat") CONFIRM PASSWORD
+            input.pure-input-1-3(type="password", placeholder="CONFIRM PASSWORD", name="password-repeat", id="password-repeat")
+          .pure-control-group
+            label
+            a.pure-button.pure-button-active.create-instance
+                            i.fa.fa-plus 
+                            | CREATE
+          .validation-error
+      h3.label(data-section="list") MY DATABASES
+      #instances-container.instances-container
+        .header-group
+          .row.head-row
+            .cell.number-cell
+            .cell DB
+            .cell TYPE
+            .cell PASSWORD
+        .row-group

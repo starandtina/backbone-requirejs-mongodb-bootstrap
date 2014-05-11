@@ -2,5 +2,6 @@
   "id": 1,
   "email": "khalilz@vmware.com",
   "name": "kz",
-  "logoutUrl": "http://www.google.com/"
+  "logoutUrl": "http://www.google.com/",
+  "authenticated": false
 }

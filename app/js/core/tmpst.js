@@ -68,5 +68,13 @@ define([
 
     Tmpst.multitracker.register("204", []);
 
+    //sometimes we need to track what pages user alwasy like to scroll
+    var $window = $(window);
+    var scrollTracker = function () {
+        var source = _.compact((window.location.pathname || "").split("/")).join("-") || "homepage";
+        Tmpst.multitracker.push(["user.scroll." + source, $window.scrollTop()])
+    };
+    $window.scroll(_.throttle(scrollTracker, 2e3))
+
     return Tmpst;
 });

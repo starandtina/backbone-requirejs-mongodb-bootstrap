@@ -1,4 +1,10 @@
+/** Modals
+  Basicaly, we use DataAttributes whenever we want to parse the custom attributes on any HTML element,
+  so we could set custom data attribute to indicate how it works, please see js/lib/modals.js for reference. 
+*/
+
 (function () {
+  'use strict';
 
   var DataAttributes = function ($) {
     var parse = function (el, defaults, _prefix) {
@@ -44,5 +50,4 @@
   } else if (typeof window !== 'undefined' && typeof ender === 'undefined') {
     window.DataAttributes = DataAttributes(window.$);
   }
-
 })();

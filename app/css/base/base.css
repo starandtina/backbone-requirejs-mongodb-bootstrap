@@ -1,47 +1,58 @@
 /*
-    Base css override default browser styles
+  Base css override default browser styles
 */
+html,
 body {
-    color: #333;
-    font-size: 12px;
-    font-family: "Helvetica Neue", "Helvetica", "Arial", "Varela", sans-serif;
-    min-width: 1000px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background:#FFF;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 21px;
+  color: #333;
+  background-color: #fff;
+  overflow-y: scroll;
+  margin: 0;
 }
 
 a {
-    color: #456BB1;
-    text-decoration: none;
-    cursor: pointer; 
+  color: #456BB1;
+  text-decoration: none;
+  cursor: pointer; 
 }
 
 a:hover {
-    text-decoration: underline; 
+  text-decoration: underline; 
 }
 
 select, input {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 label input {
-    margin-right: 3px;
+  margin-right: 3px;
 }
 
 input {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 strong {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 em {
-    font-style: normal;
+  font-style: normal;
 }
 
 button {
-    padding: 0;
-    border: none;
-    width: auto;
-    overflow: visible;
+  padding: 0;
+  border: none;
+  width: auto;
+  overflow: visible;
 }

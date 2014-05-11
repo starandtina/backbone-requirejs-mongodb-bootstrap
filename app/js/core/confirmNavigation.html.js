@@ -1,4 +1,4 @@
-(function (wndw) {
+! (function (wndw) {
 var jadify = function (jade) {
 return function anonymous(locals) {
 var buf = [];
@@ -7,5 +7,5 @@ buf.push("<div class=\"hide confirm-navigation modal\"><div class=\"modal-header
 };
 "function" == typeof define && define.amd ? define("js/core/confirmNavigation.html", ["js/lib/jade"], function (e) {
 return jadify(e); 
-}) : wndw.jade.templates.confirmNavigation= jadify(wndw.jade.helpers);
+}) : wndw.jade.templates["js/core/confirmNavigation"]= jadify(wndw.jade.helpers);
 }(window));

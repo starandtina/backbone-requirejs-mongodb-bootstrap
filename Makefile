@@ -6,8 +6,8 @@ test:
 		--reporter $(REPORTER) \
 
 test-w:
-  	@NODE_ENV=test ./node_modules/.bin/mocha \
-  		--ui bdd \
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+  	--ui bdd \
 		--reporter $(REPORTER) \
 		--growl \
 		--watch

@@ -74,7 +74,6 @@
     overflow: hidden;
     padding: 0 10px;
     line-height: 26px;
-    _overflow: visible;
     _zoom: 1;
 }
 
@@ -126,7 +125,7 @@ b {
 }
 
 .layer-trigger-selected b {
-    top: 6px\9;
+    /*top: 6px\9;*/
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);

@@ -1,3 +1,35 @@
-.logo
-    h1 Here is your Logo
-.top-nav.user
+.container
+  .pure-u-1
+    .tmpst-header-primary
+        a.internal-home.tmpst-logo
+    .tmpst-header-secondary
+      a.tmpst-header-link.internal-home(href="/dashboard") Dashboard
+      a.tmpst-header-link.internal-home(href="/vms") VMS
+      a.tmpst-header-link.internal-home(href="/services/create") Create DB
+      a.tmpst-header-link.internal-home(href="/services/list") DATABASES
+
+      a.tmpst-header-link(tabindex="0", role="button", aria-haspopup="true", aria-expanded="false", aria-owns="tmpst-header-about-popup", data-popup="#tmpst-header-about-popup", data-popup-bind-open="mouseenter", data-popup-item="a", data-popup-direction="se") About
+        span &nbsp;▾
+
+      span(style="margin:0px -2px 0px 2px;color:#717171;") |
+      a.tmpst-header-link.tmpst-header-account(tabindex="0", role="button", aria-haspopup="true", aria-expanded="false", aria-owns="tmpst-header-account-popup", data-popup="#tmpst-header-account-popup", data-popup-bind-open="mouseenter", data-popup-item="a", data-popup-direction="se", class="tmpst-header-link, tmpst-header-account")
+        span(class="tmpst-header-account-name")= user.name
+        span &nbsp;▾
+
+#tmpst-header-about-popup.hide.tmpst-header-popup
+    a(data-popup-close="data-popup-close", href="/", class="internal-home")
+        | Home
+    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")
+        | Dashboard
+    a(data-popup-close="data-popup-close", href="/about/", class="internal-about")
+        | About
+
+#tmpst-header-account-popup.hide.tmpst-header-popup
+    a(data-popup-close="data-popup-close", href="/", class="internal-home")
+        | Home
+    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")
+        | Dashboard
+    a(data-popup-close="data-popup-close", href="/about", class="internal-home")
+        | About
+    a(data-popup-close="data-popup-close", href="/account/logout", class="internal-home")
+        | Logout

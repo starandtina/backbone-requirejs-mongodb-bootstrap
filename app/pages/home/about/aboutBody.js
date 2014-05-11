@@ -1,12 +1,22 @@
 define([
-    'pages/home/about/aboutTemplate',
-    'pages/home/about/aboutBody.html'
-], function (AboutView, AboutBodyTpl) {
-    'use strict';
+  'jquery',
+  'underscore',
+  'backbone',
+  'pages/home/about/aboutBody.html',
+  'pages/home/template/body'
+], function ($, _, Backbone, AboutTpl, BodyView) {
+  'use strict';
 
-    return AboutView.extend({
-        contentTemplate: AboutBodyTpl,
-        contentTitle: 'About Us',
-        contentClass: '.about'
-    });
+  var AboutBodyView = BodyView.extend({
+    initialize: function () {
+      document.title = 'About Us';
+    },
+    render: function () {
+      this.$el.html(AboutTpl());
+
+      return this;
+    }
+  });
+
+  return AboutBodyView;
 });

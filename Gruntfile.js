@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       },
       jsTest: {
         files: ['test/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+        tasks: ['newer:jshint:test']
       },
       css: {
         files: ['<%= appConfig.app %>/css/{,*/}*.css'],
@@ -196,7 +196,7 @@ module.exports = function (grunt) {
       assets: {
         files: {
           src: [
-            '<%= appConfig.dist %>/js/{,*/}*.js',
+            '<%= appConfig.dist %>/js/*.js',
             '<%= appConfig.dist %>/css/{,*/}*.css',
             '<%= appConfig.dist %>/img/{,*/}**/*.{png,jpg,jpeg,gif,webp}',
             '<%= appConfig.dist %>/css/fonts/*'

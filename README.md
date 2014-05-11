@@ -28,14 +28,14 @@ This repo contains an example setup for set up your frontend JavaScript code bas
 
 ## Development
 
-    grunt server        // developement
+    npm start           // developement
     grunt server:dist   // production
 
 # Build
 
     grunt
 
-Currently, the build files could be found in the __out__ directory.
+Currently, the build files could be found in the __dist__ directory.
 
 # Test
 

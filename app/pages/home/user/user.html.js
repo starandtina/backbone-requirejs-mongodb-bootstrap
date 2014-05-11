@@ -1,4 +1,4 @@
-(function (wndw) {
+! (function (wndw) {
 var jadify = function (jade) {
 return function anonymous(locals) {
 var buf = [];
@@ -7,5 +7,5 @@ var locals_ = (locals || {}),user = locals_.user;buf.push("<span class=\"account
 };
 "function" == typeof define && define.amd ? define("pages/home/user/user.html", ["js/lib/jade"], function (e) {
 return jadify(e); 
-}) : wndw.jade.templates.user= jadify(wndw.jade.helpers);
+}) : wndw.jade.templates["pages/home/user/user"]= jadify(wndw.jade.helpers);
 }(window));

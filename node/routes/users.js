@@ -1,21 +1,21 @@
 var User = require("../schemas/user");
+var uuid = require('../utils').uuid;
 
 /*
- * GET users
+ * List /users
  */
 exports.list = function (req, res) {
   User.find(function (err, users) {
     if (err) {
       console.error(err);
-    } // TODO handle the error
-    else {
+    } else {
       res.send(users);
     }
   });
 };
 
 /*
- * GET users
+ * GET /users/:id
  */
 exports.read = function (req, res) {
   User.findOne({
@@ -35,7 +35,7 @@ exports.read = function (req, res) {
  */
 exports.create = function (req, res) {
   var user = new User({
-    id: req.body.id,
+    id: uuid(),
     name: req.body.name,
     logoutUrl: req.body.logoutUrl
   });
@@ -43,15 +43,14 @@ exports.create = function (req, res) {
   user.save(function (err, user) {
     if (err) {
       console.error(err);
-    } // TODO handle the error
-    else {
+    } else {
       res.send(user);
     }
   });
 };
 
 /*
- * PUT /users/id
+ * PUT /users/:id
  * Updates existing user
  */
 exports.update = function (req, res) {
@@ -68,8 +67,7 @@ exports.update = function (req, res) {
         user.save(function (err, user) {
           if (err) {
             console.error(err);
-          } // TODO handle the error
-          else {
+          } else {
             res.send(user);
           }
         });
@@ -79,7 +77,7 @@ exports.update = function (req, res) {
 };
 
 /*
- * DELETE /users/id
+ * DELETE /users/:id
  * Deletes existing user
  */
 exports.del = function (req, res) {
@@ -93,8 +91,7 @@ exports.del = function (req, res) {
         user.remove(function (err, user) {
           if (err) {
             console.error(err);
-          } // TODO handle the error
-          else {
+          } else {
             res.send(user);
           }
         });

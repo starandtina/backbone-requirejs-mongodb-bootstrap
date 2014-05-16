@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 var User = require('../schemas/user');
-var logger = require('../util/logger');
+var logger = require('../utils').logan;
 
 /**
  * Populate database with sample application data

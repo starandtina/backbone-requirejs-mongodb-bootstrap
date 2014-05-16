@@ -10,7 +10,7 @@ var routes = require('./routes');
 var path = require('path');
 var mongoose = require('mongoose');
 var configDB = require('./config/mongodb');
-var logger = require('./util/logger');
+var logger = require('./utils').logan;
 
 // configuration ===============================================================
 var dbConnection = mongoose.connect(configDB.url).connection; // connect to our database:

@@ -54,7 +54,7 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 9000,
+        port: 9999,
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
               }),
               require('connect-modrewrite')(
                 [
-                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif$ /index.html [L]',
+                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.md$ /index.html [L]',
                   '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
                 ]
               ),
@@ -93,7 +93,7 @@ module.exports = function (grunt) {
             return [
               require('connect-modrewrite')(
                 [
-                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif$ /index.html [L]',
+                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.md$ /index.html [L]',
                   '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
                 ]
               ),
@@ -422,9 +422,13 @@ module.exports = function (grunt) {
         ]
       }
     },
-    docco: {
+    docco: {      
       docs: {
-        src: ['<%= appConfig.app %>/pages/**/*.js'],
+        src: [
+          '<%= appConfig.app %>/js/**/*.js',
+          '<%= appConfig.app %>/pages/**/*.js',
+          '!<%= appConfig.app %>/pages/**/*.html.js',
+        ],
         options: {
           output: '<%= appConfig.dist %>/docs/docco'
         }
@@ -518,13 +522,13 @@ module.exports = function (grunt) {
     };
 
     var tpl = [
-      '(function (wndw) {',
+      '! (function (wndw) {',
       'var jadify = function (jade) {',
       'return <%= compiledJadeStr %>',
       '};',
       '"function" == typeof define && define.amd ? define("<%= templateName %>", ["js/lib/jade"], function (e) {',
       'return jadify(e); ',
-      '}) : wndw.jade.templates.<%= templateBaseName %>= jadify(wndw.jade.helpers);',
+      '}) : wndw.jade.templates["<%= templateBaseName %>"]= jadify(wndw.jade.helpers);',
       '}(window));'
     ].join('\n');
 
@@ -534,8 +538,8 @@ module.exports = function (grunt) {
           grunt.file.write(file.replace(/\.jade$/, '.js'), grunt.template.process(tpl, {
             data: {
               compiledJadeStr: jade.compile(grunt.file.read(file), jadeOptions).toString(),
-              templateName: file.replace(/\.jade$/, '').replace(/^app\//, ''),
-              templateBaseName: path.basename(file, '.html.jade')
+              templateName: file.replace(/^app\/|\.jade$/g, ''),
+              templateBaseName: file.replace(/^app\/|\.html\.jade$/g, '')
             }
           }));
         }

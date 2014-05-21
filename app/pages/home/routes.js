@@ -46,9 +46,8 @@ define([
         regions: {
           body: {
             'pages/home/services/servicesBody': {
-              id: 'services',
+              id: 'services-' + section,
               initialize: {
-                id: 'services',
                 section: section
               }
             }

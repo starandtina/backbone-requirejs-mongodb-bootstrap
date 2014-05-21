@@ -1,15 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "box-sizing"                 : false,
-    "box-model"                  : false,
-    "display-property-grouping"  : false,
-    "star-property-hack"         : false,
-    "ids"                        : false,
-    "underscore-property-hack"   : false,
-    "adjoining-classes"          : false,
-    "gradients"                  : false,
-    "outline-none"               : false
-=======
   "box-sizing"                 : false,
   "box-model"                  : false,
   "display-property-grouping"  : false,
@@ -21,5 +10,4 @@
   "gradients"                  : false,
   "outline-none"               : false,
   "fallback-colors"            : false
->>>>>>> Stashed changes
 }

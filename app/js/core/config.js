@@ -6,7 +6,8 @@
         "debug": true,
         "url": {
             "base": "",
-            "api": "http://localhost:3001/api"
+            "api": "http://localhost:3001/api",
+            "resource_assets": "http://localhost",
         },
         "version": "1.0.0",
         "dir": {

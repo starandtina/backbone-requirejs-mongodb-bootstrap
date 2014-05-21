@@ -53,6 +53,5 @@ dbConnection.once('open', function () {
 
   app.listen(port, function () {
     logger.success('Congrats! Open http://localhost:' + port + '!');
-    logger.url(port);
   });
 });

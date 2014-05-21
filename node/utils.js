@@ -4,8 +4,7 @@ var logan = require('logan');
 logan.set({
   error: ['%', 'red'],
   success: ['%', 'green'],
-  info: ['%', 'grey'],
-  url: ['  http://localhost:%/'.grey + '%'.cyan, '.']
+  info: ['%', 'grey']
 });
 
 exports.logan = logan;

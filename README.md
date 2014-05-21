@@ -15,12 +15,9 @@ This repo contains an example setup for set up your frontend JavaScript code bas
     npm install -g grunt-cli
     npm install -g bower 
     npm install && bower install
+    cd node && npm install
 
 # Run
-    
-## Node Server
-    
-    cd node && npm start
 
 ## Mongodb
 

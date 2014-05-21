@@ -14,7 +14,7 @@ define([
   'backbone',
   'underscore',
   'js/lib/api'
-  ], function (Backbone, _, API) {
+], function (Backbone, _, API) {
   var apiModel = {
     // overwrites a model/collections sync method
     // 
@@ -79,7 +79,9 @@ define([
       var that = this;
       var options = _options || {};
       // by default, we want this to not trigger any backbone events
-      if (attributes && !this.isNew()) options.silent = (options.silent !== undefined) ? options.silent : true;
+      if (attributes && !this.isNew()) {
+        options.silent = (options.silent !== undefined) ? options.silent : true;
+      }
       return this.save(attributes, options)
         .done(function (data) {
           if (callback) callback.call(that, null, data);

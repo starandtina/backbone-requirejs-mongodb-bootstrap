@@ -55,10 +55,10 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
         'attribute.data': 'data-readme',
         'attribute.close': 'data-readme-close',
         'class': 'readme',
-        "show.count": 0, // set if you want to force readme to show X times
+        'show.count': 0, // set if you want to force readme to show X times
         expires: null, // set if you want to stop showing readme after X date
-        "show.until.closed": false, // set to true if you want to require the user to close readme X times
-        "show.delay": 1000, // time to wait before showing readme
+        'show.until.closed': false, // set to true if you want to require the user to close readme X times
+        'show.delay': 1000, // time to wait before showing readme
         'animate.open': null,
         'animate.close': null,
         'animate.duration': 250,
@@ -78,7 +78,6 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
 
         return null;
       },
-
       makeReadMe: function (el, options) {
         var $el = $(el);
         var readme = _private.getReadMe($el);
@@ -91,11 +90,14 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
 
         return readme
       },
-      getCount: function () {
-        var cookieName = this.options['attribute.data'] + '-' + this.$el.attr(this.options['attribute.data']);
 
+      getCookieName: function () {
+        return this.options['attribute.data'] + '-' + this.$el.attr(this.options['attribute.data']);
+      },
+
+      getCount: function () {
         if (this.options['show.count']) {
-          var times = cookie.get(cookieName);
+          var times = cookie.get(_private.getCookieName.call(this));
 
           return times ? parseInt(times, 10) : 0;
         }
@@ -104,14 +106,12 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
       },
 
       increaseCount: function () {
-        var cookieName = this.options['attribute.data'] + '-' + this.$el.attr(this.options['attribute.data']);
-
         if (this.options['show.count']) {
           var times = _private.getCount.call(this) + 1;
 
-          cookie.set(cookieName, times, {
+          cookie.set(_private.getCookieName.call(this), times, {
             expires: 36500
-          })
+          });
 
           return times;
         }

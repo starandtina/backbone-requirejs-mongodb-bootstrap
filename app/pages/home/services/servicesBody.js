@@ -16,7 +16,7 @@ define([
       TABS: '[data-js-ui-tabs]',
       CREATE_INSTANCE: '.create-instance',
       INSTANCE_CONTAINER: '#instances-container .row-group',
-      FORM: '#instance-form'
+      INSTANCE_FORM: '#instance-form'
     },
     initialize: function () {
       BodyView.prototype.initialize.call(this, arguments);
@@ -62,13 +62,16 @@ define([
       this.$(this.dom.INSTANCE_CONTAINER).append(view.render({
         index: ++index
       }).el);
+
+      this.$(this.dom.INSTANCE_FORM).get(0).reset();
     },
     addAll: function () {
+      debugger
       this.InstanceList.each(this.addOne, this);
     },
     onCreateInstance: function () {
       var attrs = {};
-      _.each(this.$(this.dom.FORM).serializeArray(), function (item) {
+      _.each(this.$(this.dom.INSTANCE_FORM).serializeArray(), function (item) {
         attrs[item.name] = item.value;
       });
 

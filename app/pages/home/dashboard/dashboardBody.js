@@ -24,7 +24,7 @@ define([
       }));
       this.on('view:appended', function () {
         ReadMe($('[data-readme]')[0], {
-          'show.count': 2,
+          //'show.count': 2,
           expires: 'August 1, 2014'
 
         });

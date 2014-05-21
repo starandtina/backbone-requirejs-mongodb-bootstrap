@@ -1,6 +1,7 @@
 'use strict';
 
 var LIVERELOAD_PORT = 35729;
+var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -22,10 +23,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['<%= appConfig.app %>/js/{,*/}*.js'],
-        tasks: ['newer:jshint:all'],
-        options: {
-          livereload: true
-        }
+        tasks: ['newer:jshint:all']
       },
       jsTest: {
         files: ['test/{,*/}*.js'],
@@ -62,9 +60,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              require('connect-livereload')({
-                port: LIVERELOAD_PORT
-              }),
+              lrSnippet,
               require('connect-modrewrite')(
                 [
                   '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.md$ /index.html [L]',

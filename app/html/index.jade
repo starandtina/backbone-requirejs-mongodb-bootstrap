@@ -1,0 +1,21 @@
+doctype html
+html
+  include templates/head
+  body
+    #tmpst.tmpst
+      div(style="position:absolute;top:0px;left:0px;width:100%;height:100%;background:#f5f5f5;padding-top:5%;")
+        div
+          span#tmpst-loading-js(style="display: none; padding-left:45%") loading &nbsp;&nbsp;
+            img(src="/img/loading.gif")
+        noscript
+          div#loading-nojs(style="text-align:center; margin-bottom:10px;") Please use a modern browser with JavaScript enabled.
+      <!--[if gte IE 8]>
+      <script>document.getElementById("tmpst-loading-js").style.display = 'block';</script>
+      <![endif]-->
+      <!--[if lte IE 8]>
+      <script>document.getElementById("tmpst-loading-nojs").style.display = 'block';
+      <![endif]-->
+      <!--[if !IE]> -->
+      <script>document.getElementById("tmpst-loading-js").style.display = 'block';</script>
+      <!-- <![endif]-->
+    include templates/script

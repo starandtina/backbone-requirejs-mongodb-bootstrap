@@ -15,7 +15,7 @@ Readme lets developers create a banner in HTML, customize how many times it's sh
 when it will stop showing, and whether the user should have to close it. It uses cookies to remember close state banners.
 
 Here's an example HTML for a readme that expires on Feb 1, 2014 that the user must close:
-<div data-readme='privacy-update' data-readme-show-count='1' data-readme-show-until-closed='data-readme-show-until-closed' data-readme-expires='Feb 1, 2014' style='visibility: visible;' class='readme pure-u-1'>
+<div data-readme='privacy-update' data-readme-show-count='1' data-readme-show-until-closed='data-readme-show-until-closed' data-readme-expires='Feb 1, 2014' style='visibility: visible; display: none;' class='readme'>
   <div>
     <span>已经更新了其隐私政策。了解更多</span>
     <a href='about/privacy' data-readme-close='data-readme-close' class='internal-home'>点击这里查看</a>
@@ -26,7 +26,7 @@ Here's an example HTML for a readme that expires on Feb 1, 2014 that the user mu
 </div>
 
 Here's an example Jade snippet for a similar banner. Notice that we often link to a blog post (for students) or forum thread on the partners portal (for admins), since it's hard to convey a lot of information in a small banner.
-.readme.pure-u-1(data-readme='privacy-update', data-readme-show-count='1', data-readme-show-until-closed='data-readme-show-until-closed', data-readme-expires='Feb 1, 2014', style='visibility: visible;')
+.readme.pure-u-1(data-readme='privacy-update', data-readme-show-count='1', data-readme-show-until-closed='data-readme-show-until-closed', data-readme-expires='Feb 1, 2014', style='visibility: visible; display: none;')
   div
     span 已经更新了其隐私政策。了解更多
     a(href='about/privacy', data-readme-close='data-readme-close', class='internal-home') 点击这里查看
@@ -80,7 +80,7 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
       },
       makeReadMe: function (el, options) {
         var $el = $(el);
-        var readme = _private.getReadMe($el);
+        var readme = _private.getReadMe($el, options);
 
         // if popup hasn't been created, make one!
         if (!readme) {
@@ -88,7 +88,7 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
           $el.data('readme.me', readme);
         }
 
-        return readme
+        return readme;
       },
 
       getCookieName: function () {
@@ -98,7 +98,6 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
       getCount: function () {
         if (this.options['show.count']) {
           var times = cookie.get(_private.getCookieName.call(this));
-
           return times ? parseInt(times, 10) : 0;
         }
 
@@ -108,11 +107,9 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
       increaseCount: function () {
         if (this.options['show.count']) {
           var times = _private.getCount.call(this) + 1;
-
           cookie.set(_private.getCookieName.call(this), times, {
             expires: 36500
           });
-
           return times;
         }
 
@@ -157,20 +154,12 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
 
     ReadMe.prototype.customize = function (settings) {
       var that = this;
-      var height;
+      var height = this.$el.outerHeight();;
 
       this.options = _.extend({}, DataAttributes.parse(this.$el, _private.defaults, 'data-readme-'), settings);
       this.$el.addClass(this.options['class']);
 
       if ('banner' == this.options.type) {
-        this.$el.css({
-          visibility: 'hidden'
-        }).show();
-        height = this.$el.outerHeight();
-        this.$el.css({
-          visibility: 'visible'
-        }).hide();
-
         this.options['animate.open'] = {
           'margin-top': 0
         };
@@ -186,14 +175,6 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
           }).show().prependTo($('body'))
         });
       } else if ('footer-sticky' == this.options.type) {
-        this.$el.css({
-          visibility: 'hidden'
-        }).show();
-        height = this.$el.outerHeight();
-        this.$el.css({
-          visibility: 'visible'
-        }).hide();
-
         this.options['animate.open'] = {
           bottom: 0
         };
@@ -296,7 +277,7 @@ When [data-readme-show-until-closed] is set, the banner will show until the [dat
     };
 
     var external = function (el, options) {
-      return _private.getReadMe(el, options) || _private.makeReadMe(el, options)
+      return _private.makeReadMe(el, options);
     };
 
     return external

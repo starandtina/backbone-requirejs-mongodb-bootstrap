@@ -1,51 +1,51 @@
 
 /* async messsages*/
 .fullscreen {
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background:#000;
-    opacity:.58;
-    -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=58);
-    filter:alpha(opacity=58);
-    z-index:100000
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#000;
+  opacity:.58;
+  -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=58);
+  filter:alpha(opacity=58);
+  z-index:100000
 }
 
 .tmpst-async-message {
-    background: none repeat scroll 0 0 #FFFFFF;
-    display: none;
-    font-family: "sofiapro",Arial,sans-serif;
-    font-size: 12px;
-    left: 45%;
-    line-height: 12px;
-    position: fixed;
-    top: 6px;
-    z-index: 1000000;
+  background: none repeat scroll 0 0 #FFFFFF;
+  display: none;
+  font-family: "sofiapro",Arial,sans-serif;
+  font-size: 12px;
+  left: 45%;
+  line-height: 12px;
+  position: fixed;
+  top: 6px;
+  z-index: 1000000;
 }
 
 .tmpst-async-message .waiting {
-    background: none repeat scroll 0 0 #FFF9B8;
-    border: 1px solid #EBD700;
-    color: #857A00;
-    padding: 8px;
+  background: none repeat scroll 0 0 #FFF9B8;
+  border: 1px solid #EBD700;
+  color: #857A00;
+  padding: 8px;
 }
 
 .tmpst-async-message .error {
-    background: none repeat scroll 0 0 #FF6F4E;
-    border: 1px solid #811800;
-    padding: 8px;
+  background: none repeat scroll 0 0 #FF6F4E;
+  border: 1px solid #811800;
+  padding: 8px;
 }
 
 .tmpst-async-message .success {
-    background: none repeat scroll 0 0 #A0D269;
-    border: 1px solid #39551A;
-    padding: 8px;
+  background: none repeat scroll 0 0 #A0D269;
+  border: 1px solid #39551A;
+  padding: 8px;
 }
 
 .tmpst-async-message .message {
-    background: none repeat scroll 0 0 #FFF9B8;
-    border: 1px solid #EBD700;
-    padding: 8px;
+  background: none repeat scroll 0 0 #FFF9B8;
+  border: 1px solid #EBD700;
+  padding: 8px;
 }

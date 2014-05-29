@@ -24,9 +24,9 @@ requirejs.config({
     }
   },
   paths: {
-    'jquery': 'bower_components/jquery/jquery',
-    'underscore': 'bower_components/underscore/underscore',
-    'backbone': 'bower_components/backbone/backbone',
+    'jquery': 'js/core/jquery',
+    'underscore': 'js/core/underscore',
+    'backbone': 'js/core/backbone',
     'jquery.bbq': 'js/lib/jquery.bbq',
     'jquery.migrate': 'js/lib/jquery.migrate',
     'js/models/user.json': 'empty:'

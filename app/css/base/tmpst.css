@@ -78,9 +78,8 @@ menu, ol, ul {
 .container {
   margin: 0 auto;
   padding: 0 30px;
-  width: 960px;
+  width: 940px;
 }
-
 
 #tmpst {
   position: relative;
@@ -125,17 +124,11 @@ a.internal-home:hover {
 }
 
 .tmpst-footer .tmpst-footer-primary p {
-  width: 300px;
+  /* width: 300px; */
 }
 
 .tmpst-footer .tmpst-footer-primary .tmpst-footer-copyright {
   color: #555;
-}
-
-
-.tmpst-header .container,
-.tmpst-footer .container {
-  padding: 0 90px;
 }
 
 /* tmpst-header */
@@ -156,7 +149,7 @@ a.internal-home:hover {
   margin-top: 11px;
   width: 108px;
   height: 17px;
-  background: url(//logo.svg);
+  background: url(2https://d2wvvaown1ul17.cloudfront.net/site-static/pages/home/template/logo.svg);
   background-repeat: no-repeat;
   text-decoration: none;
 }

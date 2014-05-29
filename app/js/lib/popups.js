@@ -23,10 +23,10 @@ dropdown list. The value should be the ID attribute of the dropdown's popup.
 Its associated popup:
 
 <div id="topbar-aboutus" class="topbar-sublist">
-    <a class="topbar-sublist-item" href="https://www.coursera.org/about/jobs" target="_new">Jobs</a>
-    <a class="topbar-sublist-item" href="https://www.coursera.org/about/team" target="_new">Team</a>
-    <a class="topbar-sublist-item" href="https://www.coursera.org/about/contact" target="_new">Contact Us</a>
-    <a class="topbar-sublist-item" href="https://www.coursera.org/about/" target="_new">About Us</a>
+    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/jobs" target="_new">Jobs</a>
+    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/team" target="_new">Team</a>
+    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/contact" target="_new">Contact Us</a>
+    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/" target="_new">About Us</a>
 </div>
 */   
 

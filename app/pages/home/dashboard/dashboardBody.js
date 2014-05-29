@@ -15,6 +15,8 @@ define([
     },
     initialize: function () {
       BodyView.prototype.initialize.call(this, arguments);
+
+      this.listenTo(this, 'view:appended', this.showReadME);
     },
     render: function () {
       this.$el.html(DashboardTpl());
@@ -22,13 +24,6 @@ define([
         currentTabId: 1,
         tabItems: []
       }));
-      this.on('view:appended', function () {
-        ReadMe($('[data-readme]')[0], {
-          //'show.count': 2,
-          expires: 'August 1, 2014'
-
-        });
-      });
       /*
             this.changeWidgetState({
                 'page_num': 1111
@@ -42,6 +37,12 @@ define([
             });
 */
       return this;
+    },
+    showReadME: function () {
+      ReadMe($('[data-readme]')[0], {
+        //'show.count': 2,
+        expires: 'August 1, 2014'
+      });
     }
   });
 

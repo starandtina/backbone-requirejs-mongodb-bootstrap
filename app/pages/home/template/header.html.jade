@@ -1,14 +1,14 @@
 .container
-  .pure-u-1
+  .row
     .tmpst-header-primary
-        a.internal-home.tmpst-logo logo
+        a.internal-home.tmpst-logo= _t['Logo']
     .tmpst-header-secondary
-      a.tmpst-header-link.internal-home(href="/dashboard") Dashboard
-      a.tmpst-header-link.internal-home(href="/vms") VMS
-      a.tmpst-header-link.internal-home(href="/services/create") Create DB
-      a.tmpst-header-link.internal-home(href="/services/list") DATABASES
+      a.tmpst-header-link.internal-home(href="/dashboard")= _t['Dashboard']
+      a.tmpst-header-link.internal-home(href="/vms")= _t['VMS']
+      a.tmpst-header-link.internal-home(href="/services/create")= _t['Create DB']
+      a.tmpst-header-link.internal-home(href="/services/list")= _t['DATABASES']
 
-      a.tmpst-header-link(tabindex="0", role="button", aria-haspopup="true", aria-expanded="false", aria-owns="tmpst-header-about-popup", data-popup="#tmpst-header-about-popup", data-popup-bind-open="mouseenter", data-popup-item="a", data-popup-direction="se") About
+      a.tmpst-header-link(tabindex="0", role="button", aria-haspopup="true", aria-expanded="false", aria-owns="tmpst-header-about-popup", data-popup="#tmpst-header-about-popup", data-popup-bind-open="mouseenter", data-popup-item="a", data-popup-direction="se")= _t['About']
         span &nbsp;▾
 
       span(style="margin:0px -2px 0px 2px;color:#717171;") |
@@ -17,19 +17,12 @@
         span &nbsp;▾
 
 #tmpst-header-about-popup.hide.tmpst-header-popup
-    a(data-popup-close="data-popup-close", href="/", class="internal-home")
-        | Home
-    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")
-        | Dashboard
-    a(data-popup-close="data-popup-close", href="/about/", class="internal-about")
-        | About
+    a(data-popup-close="data-popup-close", href="/", class="internal-home")= _t['Home']
+    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")= _t['Dashboard']
+    a(data-popup-close="data-popup-close", href="/about/", class="internal-about")= _t['About']
 
 #tmpst-header-account-popup.hide.tmpst-header-popup
-    a(data-popup-close="data-popup-close", href="/", class="internal-home")
-        | Home
-    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")
-        | Dashboard
-    a(data-popup-close="data-popup-close", href="/about", class="internal-home")
-        | About
-    a(data-popup-close="data-popup-close", href="/account/logout", class="internal-home")
-        | Logout
+    a(data-popup-close="data-popup-close", href="/", class="internal-home")= _t['Home']
+    a(data-popup-close="data-popup-close", href="/dashboard", class="internal-home")= _t['Dashboard']
+    a(data-popup-close="data-popup-close", href="/about", class="internal-home")= _t['About']
+    a(data-popup-close="data-popup-close", href="/account/logout", class="internal-home")= _t['Logout']

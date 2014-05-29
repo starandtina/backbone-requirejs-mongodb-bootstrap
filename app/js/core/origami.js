@@ -6,12 +6,12 @@
  *  - making sure to still handle CTRL+clicking on links correctly
  */
 define([
-  "jquery",
-  "underscore",
-  "backbone",
-  "require",
-  "js/lib/modals",
-  "js/core/confirmNavigation.html"
+  'jquery',
+  'underscore',
+  'backbone',
+  'require',
+  'js/lib/modals',
+  'js/core/confirmNavigation.html'
   ],
 function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
   // provide a simpler super method in case we want to extend a backbone view function
@@ -23,7 +23,7 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
 
   var _private = {
     current: null,
-    body: "#origami",
+    body: '#origami',
     views: {},
     beforeUnloadMessage:
       'There are unsaved changes that will be lost if ' +
@@ -63,19 +63,19 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       self.linkClass = 'internal';
 
       // handle any internal links through the router, to avoid page refreshes
-      $("body")
-        .on("click", "a.internal", function(e) {
+      $('body')
+        .on('click', 'a.internal', function(e) {
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();
           self.navigate($(e.currentTarget)
-            .attr("href"), true);
+            .attr('href'), true);
         }
       });
 
       // This element will be used by the modal used to confirm navigation,
       // when relevant.
       this.$confirmNavigation = $(confirmNavigationTemplate());
-      $("body").append(this.$confirmNavigation);
+      $('body').append(this.$confirmNavigation);
 
       $(window).on(
         'beforeunload.origami',
@@ -91,11 +91,11 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       
       this.routePrefix = routePrefix;
       this.linkClass = linkClass;
-      $("body")
-        .on("click", "a." + this.linkClass, function(e) {
+      $('body')
+        .on('click', 'a.' + this.linkClass, function(e) {
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();
-          self.navigateTo($(e.currentTarget).attr("href"), true);
+          self.navigateTo($(e.currentTarget).attr('href'), true);
         }
       });
     },
@@ -155,9 +155,9 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
         // let's handle versions of all routes that end in a trailing slash
         // such that it redirects to the non-slash version
         // don't push it in the history buffer, or it will kill back button
-        self.route(route + "/", route + "/", function() {
+        self.route(route + '/', route + '/', function() {
           var url = Backbone.history.getFragment();
-          var rewrite = url.replace(/\/(?:\?.*)*$/, "");
+          var rewrite = url.replace(/\/(?:\?.*)*$/, '');
 
           self.navigate(rewrite, {
             trigger: true,
@@ -171,9 +171,9 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
   // provide a way to animate one region that is replacing another
   var animateManager = {
     resize: function(outgoing, incoming, callback) {
-      $("body")
+      $('body')
         .append(incoming.$el.css({
-        visibility: "hidden"
+        visibility: 'hidden'
       }));
 
       var height = {
@@ -185,11 +185,11 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
         height: height.to
       }, 300, function() {
         outgoing.$el.replaceWith(incoming.$el.css({
-          visibility: "visible"
+          visibility: 'visible'
         }));
 
-        incoming.$el.find("img")
-          .on("load", function() {
+        incoming.$el.find('img')
+          .on('load', function() {
           incoming.$el.animate({
             height: incoming.$el.outerHeight()
           });
@@ -205,21 +205,21 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       var position = going.position();
       var width = going.outerWidth();
       var height = going.outerHeight();
-      var parent = $("<div>")
+      var parent = $('<div>')
         .css({
-        position: "relative",
+        position: 'relative',
         width: width,
         height: height
       });
       var restoreIn = {
-        position: coming.css("absolute") || "static",
+        position: coming.css('absolute') || 'static',
         width: coming.get(0)
           .style.width,
         left: coming.get(0)
           .style.left
       };
       var restoreOut = {
-        position: going.css("absolute") || "static",
+        position: going.css('absolute') || 'static',
         width: going.get(0)
           .style.width,
         left: going.get(0)
@@ -230,12 +230,12 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       going.css({
         width: width,
         left: position.left,
-        position: "absolute"
+        position: 'absolute'
       });
       coming.css({
         width: width,
         left: position.left + width,
-        position: "absolute"
+        position: 'absolute'
       });
       going.parent()
         .append(coming);
@@ -266,21 +266,21 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       var position = going.position();
       var width = going.outerWidth();
       var height = going.outerHeight();
-      var parent = $("<div>")
+      var parent = $('<div>')
         .css({
-        position: "relative",
+        position: 'relative',
         width: width,
         height: height
       });
       var restoreIn = {
-        position: coming.css("absolute") || "static",
+        position: coming.css('absolute') || 'static',
         width: coming.get(0)
           .style.width,
         left: coming.get(0)
           .style.left
       };
       var restoreOut = {
-        position: going.css("absolute") || "static",
+        position: going.css('absolute') || 'static',
         width: going.get(0)
           .style.width,
         left: going.get(0)
@@ -291,12 +291,12 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       going.css({
         width: width,
         left: position.left,
-        position: "absolute"
+        position: 'absolute'
       });
       coming.css({
         width: width,
         left: -(position.left + width),
-        position: "absolute"
+        position: 'absolute'
       });
       going.parent()
         .append(coming);
@@ -360,13 +360,13 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
     if (!keep) self.view.remove();
 
     self.view.undelegateEvents();
-    self.view.trigger("view:closed");
-    self.view.off("view");
+    self.view.trigger('view:closed');
+    self.view.off('view');
   };
 
   // close a region and remove its events and if remove == true, remove it from the dom
   region.prototype.closing = function() {
-    this.view.trigger("view:closing");
+    this.view.trigger('view:closing');
     delete _private.views[this.view.cid];
   };
 
@@ -391,8 +391,8 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
 
     // hacky*2
     if(origami) {
-      self.view.on("view:appended", function() {
-        origami.trigger("region:appended", {name:self.name});
+      self.view.on('view:appended', function() {
+        origami.trigger('region:appended', {name:self.name});
       });
     }
 
@@ -405,7 +405,7 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
 
     if (that.view) {
       setTimeout(function() {
-        that.view.trigger("view:appended");
+        that.view.trigger('view:appended');
       }, 0);
     }
   };
@@ -438,14 +438,14 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
       $el.append(_region.view.el);
       _region.appended();
 
-      _singleton.trigger("region:rendered", {
+      _singleton.trigger('region:rendered', {
         name: _region
       });
 
       return _region;
     };
 
-    if(typeof(view) == "string")
+    if(typeof(view) == 'string')
       _singleton.region.fetch(view, options, render_and_append);
     else
       render_and_append(new region(view, options));
@@ -459,7 +459,7 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
   // merge this region with another (eventually replacing itself)
   region.prototype.replace = function(incoming, callback) {
     var outgoing = this;
-    var how = "replace";
+    var how = 'replace';
     
     var animate = {
       incoming: incoming.view.animate,
@@ -471,7 +471,7 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
     else if (_.isString(animate.outgoing)) how = animate.outgoing;
     else if (_.isFunction(animate.outgoing)) how = animate.outgoing();
 
-    if (!animateManager[how]) how = "replace";
+    if (!animateManager[how]) how = 'replace';
 
     animateManager[how](outgoing.view, incoming.view, callback);
   };
@@ -483,9 +483,9 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
     // if regions are the same
     if (self.is(incoming)) {
       _.each(incoming.regions, function(_region, view) {
-        self.regions[view].view.trigger("view:merging", _region.initialize);
+        self.regions[view].view.trigger('view:merging', _region.initialize);
         self.regions[view].merge(_region, origami);
-        self.regions[view].view.trigger("view:merged", _region.initialize);
+        self.regions[view].view.trigger('view:merged', _region.initialize);
       });
     } else if (self.name == incoming.name) {
       self.closing();
@@ -517,9 +517,9 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
     _private.current = current;
 
     $(window)
-      .on("resize", function() {
+      .on('resize', function() {
       for (var cid in _private.views) {
-        _private.views[cid].trigger("view:resize");
+        _private.views[cid].trigger('view:resize');
       }
     });
 
@@ -531,14 +531,14 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
 
       fetch: function(_region, conf, callback) {
         var uid = _.uniqueId();
-        that.trigger("region:fetching", {
+        that.trigger('region:fetching', {
           name: _region,
           uid: uid
         });
 
         // show message here
         require([_region], function(view) {
-          that.trigger("region:fetched", {
+          that.trigger('region:fetched', {
             name: _region,
             uid: uid
           });
@@ -572,14 +572,14 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
             callback(_region);
           _region.appended();
 
-          that.trigger("region:rendered", {
+          that.trigger('region:rendered', {
             name: _region
           });
 
           return _region;
         };
 
-        if(typeof(view) == "string")
+        if(typeof(view) == 'string')
           that.region.fetch(view, options, render_and_append);
         else
           return render_and_append(new region(view, options));
@@ -622,8 +622,13 @@ function($, _, Backbone, require, Modal, confirmNavigationTemplate) {
 
             _private.current = parent;
             $(_private.body)
-              .html(_private.current.render(that)
-              .view.el);
+              .html(
+                _private
+                  .current
+                  .render(that)
+                  .view
+                  .el
+              );
             _private.current.appended();
 
             _.each(_private.current.regions, function(_region) {

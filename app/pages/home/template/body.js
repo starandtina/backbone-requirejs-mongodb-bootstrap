@@ -11,7 +11,7 @@ define([
     attributes: {
       role: 'article'
     },
-    className: 'tmpst-body pure-g-r',
+    className: 'tmpst-body',
     animate: 'replace'
   });
 

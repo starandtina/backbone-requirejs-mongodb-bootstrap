@@ -7,7 +7,7 @@ of a modal closes it, however.
 
 Let's look at example of a modal from the course dashboard.
 Here's how it's declared in the template (courseList.js.jade):
-  div.modal.coursera-profile-modal-unenroll-survey.hide(data-modal-overlay-class="coursera-overlay-dark")
+  div.modal.tmpst-profile-modal-unenroll-survey.hide(data-modal-overlay-class="tmpst-overlay-dark")
      div.modal-body
         p
           | We'd love to learn more about your
@@ -18,7 +18,7 @@ Here's how it's declared in the template (courseList.js.jade):
         span.btn(data-modal-close) No, thanks
 
 Here's how we open it from the view:
-Modal(this.$('.coursera-profile-modal-unenroll-survey')).open();
+Modal(this.$('.tmpst-profile-modal-unenroll-survey')).open();
 
 There are a few things to note:
 - It specifies the Bootstrap provided "hide" class to make sure the modal starts off hidden.
@@ -27,8 +27,8 @@ There are a few things to note:
 - It specifies data-modal-close on the "No" button, to make the modal close upon clicking that
 
 It's also possible to trigger the opening of a modal purely in HTML. For example, this link from the 
-course session listing triggers the opening of a modal with the class name "coursera-course-selfstudy-modal":
-  a(data-modal=".coursera-course-selfstudy-modal", role="button", title="What is self study?") ?
+course session listing triggers the opening of a modal with the class name "tmpst-course-selfstudy-modal":
+  a(data-modal=".tmpst-course-selfstudy-modal", role="button", title="What is self study?") ?
         
 It's not actually necessary to use the Bootstrap modal classes, if you want a more minimal lightbox 
 or custom styling, which is the approach we take for the lecture viewing modal.

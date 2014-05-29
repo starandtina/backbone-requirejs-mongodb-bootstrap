@@ -1,15 +1,13 @@
-- var tabItems = [{id: '1', url: '/dashboard', label: 'Dashboard', 'icon': 'dashboard'}, {url: '/vms', label: 'Virtual Machines', id: '2', 'icon': 'bookmark'}, {url: '/gws', label: 'Gateways', id: '3', 'icon': 'bookmark'}, {url: '/services/create', label: 'Services', id: '4', 'icon': 'bookmark'}]
+- var tabItems = [{id: '1', url: '/dashboard', label: 'Dashboard', 'icon': 'dashboard'}, {url: '/vms', label: 'VMS', id: '2', 'icon': 'bookmark'}, {url: '/gws', label: 'Gateways', id: '3', 'icon': 'bookmark'}, {url: '/services/create', label: 'Services', id: '4', 'icon': 'bookmark'}]
 
 .ui-tab
-    ul.tab-list
-        each tab in tabItems
-            if currentTabId == tab.id
-                li.tab-unit
-                    a.tab-on.tab.internal-home(href="#{tab.url}")
-                      i(class="fa fa-#{tab.icon}")
-                      = tab.label
-            else
-                li.tab-unit
-                    a.tab.internal-home(href="#{tab.url}")
-                      i(class="fa fa-#{tab.icon}")
-                      = tab.label
+  ul.tab-list
+    each tab in tabItems
+      if currentTabId == tab.id
+        li.tab-unit
+          a.tab-on.tab.internal-home(href="#{tab.url}")
+            i(class="fa fa-#{tab.icon}")= _t[tab.label]
+      else
+        li.tab-unit
+          a.tab.internal-home(href="#{tab.url}")
+            i(class="fa fa-#{tab.icon}")= _t[tab.label]

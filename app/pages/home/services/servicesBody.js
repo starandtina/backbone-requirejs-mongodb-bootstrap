@@ -23,7 +23,7 @@ define([
 
       // act as internal anchor,  pass the "section" into the view, and use JS to jump to that part of the view, post-rendering
       var that = this;
-      this.bind("view:merged", function (options) {
+      this.on("view:merged", function (options) {
         if (options && options.section) {
           Util.scrollToInternalLink(that.$el, options.section);
         } else {

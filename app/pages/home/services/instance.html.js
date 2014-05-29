@@ -1,11 +1,18 @@
 ! (function (wndw) {
-var jadify = function (jade) {
-return function anonymous(locals) {
+var jadify = function (jade, _t) {
+var yudify = function template(locals) {
 var buf = [];
-var locals_ = (locals || {}),index = locals_.index,description = locals_.description,database = locals_.database,type = locals_.type,password = locals_.password;buf.push("<div class=\"cell number-cell\">" + (jade.escape(null == (jade.interp = index) ? "" : jade.interp)) + "</div><div" + (jade.attrs({ 'title':(description), "class": [('cell')] }, {"title":true})) + ">" + (jade.escape(null == (jade.interp = database) ? "" : jade.interp)) + "</div><div class=\"cell\">" + (jade.escape(null == (jade.interp = type) ? "" : jade.interp)) + "</div><div class=\"cell\">" + (jade.escape(null == (jade.interp = password) ? "" : jade.interp)) + "</div>");;return buf.join("");
+var jade_mixins = {};
+var jade_interp;
+;var locals_for_with = (locals || {});(function (index, description, database, type, password) {
+buf.push("<div class=\"cell number-cell\">" + (jade.escape(null == (jade_interp = index) ? "" : jade_interp)) + "</div><div" + (jade.attr("title", description, true, false)) + " class=\"cell\">" + (jade.escape(null == (jade_interp = database) ? "" : jade_interp)) + "</div><div class=\"cell\">" + (jade.escape(null == (jade_interp = type) ? "" : jade_interp)) + "</div><div class=\"cell\">" + (jade.escape(null == (jade_interp = password) ? "" : jade_interp)) + "</div>");}("index" in locals_for_with?locals_for_with.index:typeof index!=="undefined"?index:undefined,"description" in locals_for_with?locals_for_with.description:typeof description!=="undefined"?description:undefined,"database" in locals_for_with?locals_for_with.database:typeof database!=="undefined"?database:undefined,"type" in locals_for_with?locals_for_with.type:typeof type!=="undefined"?type:undefined,"password" in locals_for_with?locals_for_with.password:typeof password!=="undefined"?password:undefined));;return buf.join("");
+}
+return function (locals) {
+if (locals && locals._t) _t = locals._t.merge(_t);
+return yudify(locals);
 }
 };
-"function" == typeof define && define.amd ? define("pages/home/services/instance.html", ["js/lib/jade"], function (e) {
-return jadify(e); 
+"function" == typeof define && define.amd ? define("pages/home/services/instance.html", ["js/lib/jade", "i18n!pages/home/services/nls/instance"], function (e, _t) {
+return jadify(e, _t); 
 }) : wndw.jade.templates["pages/home/services/instance"]= jadify(wndw.jade.helpers);
 }(window));

@@ -1,14 +1,24 @@
 'use strict';
 
 var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var SERVER_PORT = 9999;
+var lrSnippet = require('connect-livereload')({
+  port: LIVERELOAD_PORT
+});
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
+global.window = require('jsdom').jsdom().createWindow('');
 
 module.exports = function (grunt) {
+  // show elapsed time at the end
+  require('time-grunt')(grunt);
   // load all grunt tasks
-  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  //require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  require('load-grunt-tasks')(grunt);
+
+  // load custom tasks
+  grunt.loadTasks('tasks');
 
   // configurable paths
   var appConfig = {
@@ -34,12 +44,16 @@ module.exports = function (grunt) {
         tasks: ['concat:css']
       },
       jade: {
-        files: ['<%= appConfig.app %>/**/*.jade'],
-        tasks: ['jade:pages']
+        files: ['<%= appConfig.app %>/html/**/*.jade'],
+        tasks: ['jade:compile']
+      },
+      jadeamd: {
+        files: ['<%= appConfig.app %>/js/**/*.jade', '<%= appConfig.app %>/pages/**/*.jade'],
+        tasks: ['jadeamd:compile']
       },
       livereload: {
         options: {
-          livereload: LIVERELOAD_PORT
+          livereload: grunt.option('livereloadport') || LIVERELOAD_PORT
         },
         files: [
           '<%= appConfig.tmp %>/js/**/*.js',
@@ -52,7 +66,7 @@ module.exports = function (grunt) {
     },
     connect: {
       options: {
-        port: 9999,
+        port: grunt.option('port') || SERVER_PORT,
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
       },
@@ -78,7 +92,8 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               mountFolder(connect, '.tmp'),
-              mountFolder(connect, 'test')
+              mountFolder(connect, 'test'),
+              mountFolder(connect, appConfig.app)
             ];
           }
         }
@@ -176,7 +191,7 @@ module.exports = function (grunt) {
             '<%= appConfig.app %>/css/base/reset.css',
             '<%= appConfig.app %>/css/base/base.css',
             '<%= appConfig.app %>/css/base/layout.css',
-            '<%= appConfig.app %>/bower_components/pure/pure.css',
+            '<%= appConfig.app %>/css/base/bootstrap.css',
             '<%= appConfig.app %>/css/ui/**/*.css',
             '<%= appConfig.app %>/css/base/tmpst.css'
           ]
@@ -282,7 +297,7 @@ module.exports = function (grunt) {
       },
       server: [
         'concat:css',
-        'jade:pages'
+        'jadeamd:compile'
       ],
       test: [
         'concat:css',
@@ -292,35 +307,32 @@ module.exports = function (grunt) {
       ],
       dist: [
         'concat:css',
-        'requirejs:app',
+        'requirejs:compile',
         'imagemin',
         'svgmin',
         'htmlmin'
       ]
-    },
-    uglify: {
-      options: {
-        mangle: false
-      }
     },
     shell: {
       deps: {
         command: './node_modules/grunt-cli/bin/grunt'
       }
     },
-    jade: {
-      pages: {
+    jadeamd: {
+      compile: {
         options: {},
         expand: true,
         cwd: '<%= appConfig.app %>',
         src: ['pages/home/**/*.jade', 'js/**/*.jade']
       }
     },
+    // refer to https://github.com/jrburke/r.js/blob/master/build/example.build.js
     requirejs: {
-      app: {
+      compile: {
         options: {
-          baseUrl: './<%= appConfig.app %>/',
-          name: 'pages/home/routes',
+          appDir: './<%= appConfig.app %>/',
+          baseUrl: './',
+          dir: './<%= appConfig.dist %>/',
           shim: {
             'underscore': {
               exports: '_'
@@ -336,12 +348,18 @@ module.exports = function (grunt) {
             }
           },
           paths: {
-            'jquery': 'bower_components/jquery/jquery',
-            'underscore': 'bower_components/underscore/underscore',
-            'backbone': 'bower_components/backbone/backbone'
+            'jquery': 'js/core/jquery',
+            'underscore': 'js/core/underscore',
+            'backbone': 'js/core/backbone',
+            'jquery.bbq': 'js/lib/jquery.bbq',
+            'jquery.migrate': 'js/lib/jquery.migrate',
+            'js/models/user.json': 'empty:'
           },
-          out: '<%= appConfig.dist %>/pages/home/routes.js',
           optimize: 'uglify2',
+          skipDirOptimize: false,
+          //fileExclusionRegExp: /^bower_components$/,
+          //normalizeDirDefines: "skip",
+          // refer to https://github.com/mishoo/UglifyJS2
           uglify2: {
             output: {
               beautify: false
@@ -356,6 +374,15 @@ module.exports = function (grunt) {
             warnings: true,
             mangle: true
           },
+          modules: [{
+            name: 'pages/home/routes'
+          }, {
+            name: 'pages/about/routes'
+          }],
+          preserveLicenseComments: false,
+          optimizeCss: 'standard',
+          useStrict: true,
+          removeCombined: true
         }
       }
     },
@@ -418,7 +445,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    docco: {      
+    docco: {
       docs: {
         src: [
           '<%= appConfig.app %>/js/**/*.js',
@@ -444,9 +471,41 @@ module.exports = function (grunt) {
         }]
       }
     },
+    jade: {
+      compile: {
+        options: {
+          pretty: true,
+          data: function (dest, src) {
+            var configFile = './' + appConfig.app + '/js/core/config.js';
+            console.dir(require('requirejs')(configFile))
+            return {
+              config: require('requirejs')(configFile)
+            };
+          }
+        },
+        files: {
+          '<%= appConfig.app %>/index.html': ['<%= appConfig.app %>/html/index.jade']
+        }
+      }
+    },
+    uglify: {
+      options: {
+        mangle: true,
+        compress: true,
+        report: 'gzip'
+      },
+      compile: {
+        files: [{
+          expand: true,
+          cwd: '<%= appConfig.dist %>',
+          src: '{js,pages}/**/*.js',
+          dest: '<%= appConfig.dist %>'
+        }]
+      }
+    },
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
     }
@@ -484,9 +543,9 @@ module.exports = function (grunt) {
     'useminPrepare',
     'copy',
     'concurrent:dist',
+    'autoprefixer',
     'concat',
     'cssmin',
-    'uglify',
     'rev',
     'usemin'
   ]);
@@ -504,49 +563,4 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
-
-  // -- Jade Task -------------------------------------------------------------
-  grunt.registerMultiTask('jade', 'Convert Jade Template to JS client-side functions', function () {
-    var jade = require('jade');
-    var path = require('path');
-    var tally = 0;
-    var jadeOptions = {
-      compileDebug: false,
-      client: true,
-      self: false,
-      debug: false
-    };
-
-    var tpl = [
-      '! (function (wndw) {',
-      'var jadify = function (jade) {',
-      'return <%= compiledJadeStr %>',
-      '};',
-      '"function" == typeof define && define.amd ? define("<%= templateName %>", ["js/lib/jade"], function (e) {',
-      'return jadify(e); ',
-      '}) : wndw.jade.templates["<%= templateBaseName %>"]= jadify(wndw.jade.helpers);',
-      '}(window));'
-    ].join('\n');
-
-    this.files.forEach(function (filePair) {
-      filePair.src.forEach(function (file) {
-        try {
-          grunt.file.write(file.replace(/\.jade$/, '.js'), grunt.template.process(tpl, {
-            data: {
-              compiledJadeStr: jade.compile(grunt.file.read(file), jadeOptions).toString(),
-              templateName: file.replace(/^app\/|\.jade$/g, ''),
-              templateBaseName: file.replace(/^app\/|\.html\.jade$/g, '')
-            }
-          }));
-        }
-        catch(err) {
-          grunt.fatal(err);
-        }
-
-        tally += 1;
-        grunt.log.debug('Jade ' + file);
-      });
-    });
-    grunt.log.debug('Convert Jade Templates on ' + String(tally).cyan + ' files.');
-  });
 };

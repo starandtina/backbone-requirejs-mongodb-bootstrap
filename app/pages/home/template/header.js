@@ -3,9 +3,8 @@ define([
   'underscore',
   'backbone',
   'js/app/home',
-  'pages/home/template/header.html',
-  'pages/home/user/user.html'
-], function ($, _, Backbone, Tmpst, HeaderTpl, UserTpl) {
+  'pages/home/template/header.html'
+], function ($, _, Backbone, Tmpst, HeaderTpl) {
   'use strict';
 
   return Backbone.View.extend({

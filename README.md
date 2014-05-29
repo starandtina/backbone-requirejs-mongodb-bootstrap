@@ -24,7 +24,7 @@ This repo contains an example setup for set up your frontend JavaScript code bas
 
 ## Mongodb
 
-    mongod
+    mongod --dbpath ~/test/mongodb
 
 ## Development
 

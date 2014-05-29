@@ -13,9 +13,7 @@ This repo contains an example setup for set up your frontend JavaScript code bas
 # Install
 
     npm install -g grunt-cli
-    npm install -g bower 
-    npm install && bower install
-    cd node && npm install
+    npm install && cd node && npm install
 
 # Run
 
@@ -26,7 +24,7 @@ This repo contains an example setup for set up your frontend JavaScript code bas
 ## Development
 
     npm start           // developement
-    grunt server:dist   // production
+    grunt serve:dist   // production
 
 # Build
 

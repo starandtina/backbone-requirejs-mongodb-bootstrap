@@ -1,4 +1,4 @@
-var bower = require('bower');
+'use strict';
 
 module.exports = function (grunt) {
   grunt.registerMultiTask('jadeamd', 'Convert Jade Template to JS client-side functions', function () {
@@ -49,16 +49,5 @@ module.exports = function (grunt) {
       });
     });
     grunt.log.debug('Convert Jade Templates on ' + String(tally).cyan + ' files.');
-  });
-
-  grunt.registerTask('bower', 'Install Bower packages.', function () {
-    var done = this.async();
-
-    bower.commands.install()
-      .on('log', function (result) {
-        grunt.log.ok('bower: ' + result.id + ' ' + result.data.endpoint.name);
-      })
-      .on('error', grunt.fail.warn.bind(grunt.fail))
-      .on('end', done);
   });
 };

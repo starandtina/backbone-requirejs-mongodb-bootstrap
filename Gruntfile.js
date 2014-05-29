@@ -357,7 +357,7 @@ module.exports = function (grunt) {
           },
           optimize: 'uglify2',
           skipDirOptimize: false,
-          //fileExclusionRegExp: /^bower_components$/,
+          //fileExclusionRegExp: /^docs$/,
           //normalizeDirDefines: "skip",
           // refer to https://github.com/mishoo/UglifyJS2
           uglify2: {

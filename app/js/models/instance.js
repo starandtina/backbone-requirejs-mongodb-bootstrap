@@ -9,8 +9,8 @@ define([
   var Instance = Backbone.Model.extend({
     defaults: {
       password: null,
-      'password-repeat': null,
       database: null,
+      createTime: null,
       type: 'MSSQL 2012',
       description: 'Basic: Dedicate server, shared VM, 256MB memory, 2560MB storage, 30 connections'
     },

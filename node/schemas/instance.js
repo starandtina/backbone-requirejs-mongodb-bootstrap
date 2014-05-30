@@ -20,6 +20,10 @@ var Instance = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  createTime: {
+    type: String,
+    required: true
   }
 });
 

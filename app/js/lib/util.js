@@ -21,6 +21,7 @@ define([
 
 
     return {
+        moment: Moment,
         scrollToInternalLink: scrollToInternalLink
     }
 });

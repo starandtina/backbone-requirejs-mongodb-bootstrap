@@ -41,6 +41,11 @@
   float: right; 
 }
 
+.hide,
+.hiding {
+  display: none;
+}
+
 .gray {
   color: gray; 
 }
@@ -51,10 +56,6 @@
 
 .green {
   color: green;
-}
-
-.hide {
-  display: none;
 }
 
 .bfc {

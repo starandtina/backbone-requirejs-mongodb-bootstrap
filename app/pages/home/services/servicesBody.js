@@ -21,9 +21,9 @@ define([
     initialize: function () {
       BodyView.prototype.initialize.call(this, arguments);
 
-      // act as internal anchor,  pass the "section" into the view, and use JS to jump to that part of the view, post-rendering
+      // act as internal anchor,  pass the 'section' into the view, and use JS to jump to that part of the view, post-rendering
       var that = this;
-      this.on("view:merged", function (options) {
+      this.on('view:merged', function (options) {
         if (options && options.section) {
           Util.scrollToInternalLink(that.$el, options.section);
         } else {
@@ -66,7 +66,6 @@ define([
       this.$(this.dom.INSTANCE_FORM).get(0).reset();
     },
     addAll: function () {
-      debugger
       this.InstanceList.each(this.addOne, this);
     },
     onCreateInstance: function () {
@@ -74,6 +73,8 @@ define([
       _.each(this.$(this.dom.INSTANCE_FORM).serializeArray(), function (item) {
         attrs[item.name] = item.value;
       });
+
+      attrs.createTime = Util.moment().format();
 
       this.instanceList.create(attrs, {
         wait: true,

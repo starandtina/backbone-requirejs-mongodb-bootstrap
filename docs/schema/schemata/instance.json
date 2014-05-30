@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-04/hyper-schema",
+  "title": "Instance",
+  "definitions": {
+    "id": {
+      "description": "unique identifier of instance",
+      "example": "01234567-89ab-cdef-0123-456789abcdef",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "type": {
+      "description": "MSSQL 2012",
+      "example": "",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "description": {
+      "description": "description of instance",
+      "example": "Basic: Dedicate server, shared VM, 256MB memory, 2560MB storage, 30 connections",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "database": {
+      "description": "database name of instance",
+      "example": "db-name",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "password": {
+      "description": "user password of instance",
+      "example": "12345678",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "createTime": {
+      "description": "when instance was created",
+      "example": "2012-01-01T12:00:00Z",
+      "format": "uuid",
+      "type": [
+        "string"
+      ]
+    },
+    "identity": {
+      "$ref": "/schemata/instance#/definitions/id"
+    }
+  },
+  "description": "schema for one instance",
+  "links": [{
+    "description": "Create a new instance.",
+    "href": "/instances",
+    "method": "POST",
+    "rel": "create",
+    "schema": {
+      "properties": {},
+      "type": [
+        "object"
+      ]
+    },
+    "title": "Create"
+  }, {
+    "description": "Delete an existing instance.",
+    "href": "/instances/{(%2Fschemata%2Finstance%23%2Fdefinitions%2Fidentity)}",
+    "method": "DELETE",
+    "rel": "destroy",
+    "title": "Delete"
+  }, {
+    "description": "Info for existing instance.",
+    "href": "/instances/{(%2Fschemata%2Finstance%23%2Fdefinitions%2Fidentity)}",
+    "method": "GET",
+    "rel": "self",
+    "title": "Info"
+  }, {
+    "description": "List existing instances.",
+    "href": "/instances",
+    "method": "GET",
+    "rel": "instances",
+    "title": "List"
+  }, {
+    "description": "Update an existing instance.",
+    "href": "/instances/{(%2Fschemata%2Finstance%23%2Fdefinitions%2Fidentity)}",
+    "method": "PATCH",
+    "rel": "update",
+    "schema": {
+      "properties": {},
+      "type": [
+        "object"
+      ]
+    },
+    "title": "Update"
+  }],
+  "properties": {
+    "id": {
+      "$ref": "/schemata/instance#/definitions/id"
+    },
+    "type": {
+      "$ref": "/schemata/instance#/definitions/type"
+    },
+    "description": {
+      "$ref": "/schemata/instance#/definitions/description"
+    },
+    "database": {
+      "$ref": "/schemata/instance#/definitions/database"
+    },
+    "password": {
+      "$ref": "/schemata/instance#/definitions/password"
+    },
+    "createTime": {
+      "$ref": "/schemata/instance#/definitions/createTime"
+    },
+  },
+  "type": [
+    "object"
+  ],
+  "id": "schemata/instance"
+}

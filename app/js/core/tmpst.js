@@ -6,14 +6,19 @@ define([
   'js/core/config',
   'js/lib/log',
   'js/lib/multitracker',
-  'js/lib/supports'
-], function (Origami, $, _, Backbone, config, Log, MultiTracker, supports) {
+  'js/lib/supports',
+  'js/lib/language',
+  'js/lib/moment',
+  'i18n!js/lib/nls/moment.lang'
+], function (Origami, $, _, Backbone, config, Log, MultiTracker, Supports, Language, Moment) {
   'use strict';
+
+  Moment.lang(Language.getLanguageCode());
 
   var Tmpst = new Origami('#tmpst');
 
   Tmpst.config = config;
-  Tmpst.supports = supports;
+  Tmpst.supports = Supports;
   Tmpst.log = Log({
     level: config.log
   });

@@ -77,7 +77,7 @@ module.exports = function (grunt) {
               lrSnippet,
               require('connect-modrewrite')(
                 [
-                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.md$ /index.html [L]',
+                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.ico|\\.md$ /index.html [L]',
                   '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
                 ]
               ),
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
             return [
               require('connect-modrewrite')(
                 [
-                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.md$ /index.html [L]',
+                  '!\\.html|/api|\\.js|\\.svg|\\.css|\\.png|\\.gif|\\.ico|\\.md$ /index.html [L]',
                   '^/api/(.*)$ http://localhost:3000/api/$1 [P]'
                 ]
               ),

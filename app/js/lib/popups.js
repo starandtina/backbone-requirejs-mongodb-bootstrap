@@ -4,10 +4,10 @@ Please follow the recommended usage for optimal accessibility.
 
 An example anchor, with proper ARIA attributes and explanation:
 
-<li class="topbar-nav-list-item"
-    tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-owns="topbar-aboutus"
-    data-popup="#topbar-aboutus" data-popup-bind-open="mouseenter" data-popup-direction="se" data-popup-close style="cursor:pointer;">
-    <a>About <i class="icon-caret-down"></i></a>
+<li class='topbar-nav-list-item'
+    tabindex='0' role='button' aria-haspopup='true' aria-expanded='false' aria-owns='topbar-aboutus'
+    data-popup='#topbar-aboutus' data-popup-bind-open='mouseenter' data-popup-direction='se' data-popup-close style='cursor:pointer;'>
+    <a>About <i class='icon-caret-down'></i></a>
 </li>
 
 • The link will appear as a menu button to a screen reader due to the button role and
@@ -15,18 +15,18 @@ the aria-haspopup attribute, and the screen readers will announce that the menu 
 expanded by pressing the space bar.
 • The expanded state of the dropdown is conveyed to the screen reader through
 the aria-expanded attribute. The value of this attribute is dynamically set
-to "true" or "false" depending on whether the dropdown is currently expanded or
+to 'true' or 'false' depending on whether the dropdown is currently expanded or
 collapsed. You should set it to false in the HTML to begin with.
 • The aria-owns attribute is used to create a relationship between the link and the
 dropdown list. The value should be the ID attribute of the dropdown's popup.
 
 Its associated popup:
 
-<div id="topbar-aboutus" class="topbar-sublist">
-    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/jobs" target="_new">Jobs</a>
-    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/team" target="_new">Team</a>
-    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/contact" target="_new">Contact Us</a>
-    <a class="topbar-sublist-item" href="https://www.tmpst.org/about/" target="_new">About Us</a>
+<div id='topbar-aboutus' class='topbar-sublist'>
+    <a class='topbar-sublist-item' href='https://www.tmpst.org/about/jobs' target='_new'>Jobs</a>
+    <a class='topbar-sublist-item' href='https://www.tmpst.org/about/team' target='_new'>Team</a>
+    <a class='topbar-sublist-item' href='https://www.tmpst.org/about/contact' target='_new'>Contact Us</a>
+    <a class='topbar-sublist-item' href='https://www.tmpst.org/about/' target='_new'>About Us</a>
 </div>
 */   
 
@@ -67,7 +67,7 @@ Its associated popup:
       timeoutClear: null,
   
       getPopup: function(el, options) {
-        var pop = $(el).data("popup.me");
+        var pop = $(el).data('popup.me');
   
         if (pop && pop.constructor == Popup.prototype.constructor) {
           if (options) return pop.customize(options);
@@ -108,7 +108,7 @@ Its associated popup:
         // $el should be the popup
         if (!pop) {
           pop = new Popup($el, settings);
-          $el.data("popup.me", pop);
+          $el.data('popup.me', pop);
         }
       
         return pop;
@@ -165,7 +165,7 @@ Its associated popup:
 
         // if a previous intent was registered, cancel it, because a new intent is needed
         if(_private.prevTimeout) {
-          $(document).off(".popup");
+          $(document).off('.popup');
           window.clearTimeout(_private.prevTimeout);
         }
 
@@ -173,7 +173,7 @@ Its associated popup:
         // open the popup if it isn't already open
         _private.prevTimeout = window.setTimeout(function() {
           window.clearTimeout(_private.prevTimeout);
-          $(document).off(".popup");
+          $(document).off('.popup');
 
           if(!popup.isOpen()) {
             popup.open($anchor);
@@ -181,11 +181,11 @@ Its associated popup:
         }, popup.options['timeout.intent']);
 
         // if mousemove or mouseleave is detected, check to see if we have left the $anchor
-        $(document).on("mousemove.popup mouseleave.popup", function(e) {
+        $(document).on('mousemove.popup mouseleave.popup', function(e) {
           // if mouse leaves document or moves not on popup, intent is called off
-          if(e.type == "mouseleave" || (e.target != anchor && $(e.target).closest(anchor).size() === 0)) {
+          if(e.type == 'mouseleave' || (e.target != anchor && $(e.target).closest(anchor).size() === 0)) {
             // if we have left the $anchor, cancel the intent
-            $(document).off(".popup");
+            $(document).off('.popup');
             window.clearTimeout(_private.prevTimeout);
           } 
         });
@@ -250,11 +250,11 @@ Its associated popup:
         if (that.options.resize) this.$el.width(this.$anchor.outerWidth());
         if (that.options.width) this.$el.css('width', that.options.width);
 
-        this.trigger("opening", this.$anchor);
+        this.trigger('opening', this.$anchor);
 
-        if (!this.options.direction || this.options.direction == "sw") {
+        if (!this.options.direction || this.options.direction == 'sw') {
           this.move(position.left + this.options['offset.x'], position.top + $anchor.outerHeight() + this.options['offset.y']);
-        } else if (this.options.direction == "se") {
+        } else if (this.options.direction == 'se') {
           this.move(
             position.left + $anchor.outerWidth() + this.options['offset.x'] - this.$el.outerWidth(),
             position.top + $anchor.outerHeight() + this.options['offset.y']);
@@ -279,7 +279,7 @@ Its associated popup:
         window.setTimeout(function() {
           _private.closeOlderPopups();
           $anchor.addClass('popup-opened').focus();
-          that.trigger("opened", that.$anchor);
+          that.trigger('opened', that.$anchor);
           that.state = OPENED;
           _private.prevPopup = that;
 
@@ -311,22 +311,22 @@ Its associated popup:
       this.$el.css({
         left: x,
         top: y,
-        "z-index": z || 10000,
+        'z-index': z || 10000,
         position: this.options.position
       });
       return this;
     };
   
     Popup.prototype.close = function() {
-      $(document).off(".popup");
+      $(document).off('.popup');
 
       this.$anchor.attr('aria-expanded', 'false');
       this.$anchor.removeClass('popup-opened');
-      this.trigger("closing", this.$anchor);
-      this.$el.off(".popup").hide();
-      this.$anchor.off(".popup");
+      this.trigger('closing', this.$anchor);
+      this.$el.off('.popup').hide();
+      this.$anchor.off('.popup');
       this.$parent.append(this.$el);
-      this.trigger("closed", this.$anchor);
+      this.trigger('closed', this.$anchor);
       this.$anchor = null;
       this.state = CLOSED;
       window.clearTimeout(this.timeout);
@@ -355,9 +355,9 @@ Its associated popup:
       }
   
       // TODO handle touch events since click has a 300ms delay
-      $view.on("click.popup mouseenter.popup keydown.popup", "[" + options['attribute.open'] + "]", function(e) {
+      $view.on('click.popup mouseenter.popup keydown.popup', '[' + options['attribute.open'] + ']', function(e) {
         var $anchor = $(this);
-        var bind = $anchor.attr("data-popup-bind-open");
+        var bind = $anchor.attr('data-popup-bind-open');
   
         if ($anchor.attr('disabled') == 'disabled') return;
   
@@ -379,7 +379,7 @@ Its associated popup:
         }
   
         // if e.type is not click but we are a touchDevice, just force it, since mouseover will never happen
-        if (e.type == bind || (!bind && e.type == 'click') || (_private.isTouch && e.type == "click")) {
+        if (e.type == bind || (!bind && e.type == 'click') || (_private.isTouch && e.type == 'click')) {
           if(e.type == 'mouseover' || e.type == 'mouseenter') {
             _private.intentOpen(e, pop, $anchor);
           } else {
@@ -391,7 +391,7 @@ Its associated popup:
   
     external.stop = function(view) {
       var $view = $(view);
-      $view.off(".popup");
+      $view.off('.popup');
       _private.closeOlderPopups();
     };
   
@@ -401,8 +401,8 @@ Its associated popup:
     return external;
   };
 
-  if(typeof define === "function" && define.amd) {
-    define(["jquery", "underscore", "backbone"], function($, _, Backbone) { 
+  if(typeof define === 'function' && define.amd) {
+    define(['jquery', 'underscore', 'backbone'], function($, _, Backbone) { 
       return popup($, _, Backbone);
     });
   } else {

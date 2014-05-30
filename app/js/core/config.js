@@ -3,7 +3,7 @@
 
   var config = {
     environment: 'production',
-    
+    locale: wndw.navigator.language,
     out: 'js/core/config.js',
     log: 'info',
     debug: true,

@@ -39,7 +39,8 @@ exports.create = function (req, res) {
     type: req.body.type,
     description: req.body.description,
     database: req.body.database,
-    password: req.body.password
+    password: req.body.password,
+    createTime: req.body.createTime
   });
 
   instance.save(function (err, instance) {
@@ -67,6 +68,7 @@ exports.update = function (req, res) {
         instance.description = req.body.description;
         instance.database = req.body.database;
         instance.password = req.body.password;
+        instance.createTime = req.body.createTime;
 
         instance.save(function (err, instance) {
           if (err) {

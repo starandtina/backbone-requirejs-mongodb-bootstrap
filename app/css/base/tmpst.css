@@ -63,6 +63,10 @@
   *zoom: 1;
 }
 
+.label {
+  color: #000;
+}
+
 .mt20 {
   margin-top: 20px;
 }
@@ -115,7 +119,7 @@ a.internal-home:hover {
   color: #555;
 }
 
-.tmpst-footer h6 {
+.tmpst-footer .first-label {
   font-size: 11.9px;
   margin: 10.5px 0;
   text-transform: uppercase;
@@ -123,11 +127,11 @@ a.internal-home:hover {
   line-height: 21px;
   text-rendering: optimizelegibility;
 }
-
+ /*
 .tmpst-footer .tmpst-footer-primary p {
-  /* width: 300px; */
+  width: 300px; 
 }
-
+*/
 .tmpst-footer .tmpst-footer-primary .tmpst-footer-copyright {
   color: #555;
 }

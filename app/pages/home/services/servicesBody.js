@@ -80,6 +80,9 @@ define([
         wait: true,
         validate: true // make validate method is called before **set**
       });
+    },
+    hasUnsavedModel: function () {
+      return false;
     }
   });
 

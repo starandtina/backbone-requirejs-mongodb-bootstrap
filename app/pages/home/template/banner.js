@@ -13,5 +13,5 @@ define([
     }
   });
 
-  return banner
+  return banner;
 });

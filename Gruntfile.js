@@ -441,7 +441,8 @@ module.exports = function (grunt) {
           }]
         },
         src: [
-          '<%= appConfig.app %>/css/**/*.css'
+          '<%= appConfig.app %>/css/**/*.css',
+          '!<%= appConfig.app %>/css/base/bootstrap.css'
         ]
       }
     },
@@ -477,7 +478,6 @@ module.exports = function (grunt) {
           pretty: true,
           data: function (dest, src) {
             var configFile = './' + appConfig.app + '/js/core/config.js';
-            console.dir(require('requirejs')(configFile))
             return {
               config: require('requirejs')(configFile)
             };
@@ -540,6 +540,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'jade',
     'useminPrepare',
     'copy',
     'concurrent:dist',

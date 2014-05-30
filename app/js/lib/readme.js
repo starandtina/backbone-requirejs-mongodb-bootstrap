@@ -26,7 +26,7 @@ Here's an example HTML for a readme that expires on Feb 1, 2014 that the user mu
 </div>
 
 Here's an example Jade snippet for a similar banner. Notice that we often link to a blog post (for students) or forum thread on the partners portal (for admins), since it's hard to convey a lot of information in a small banner.
-.readme.pure-u-1(data-readme='privacy-update', data-readme-show-count='1', data-readme-show-until-closed='data-readme-show-until-closed', data-readme-expires='Feb 1, 2014', style='visibility: visible; display: none;')
+.readme(data-readme='privacy-update', data-readme-show-count='1', data-readme-show-until-closed='data-readme-show-until-closed', data-readme-expires='Feb 1, 2014', style='visibility: visible; display: none;')
   div
     span 已经更新了其隐私政策。了解更多
     a(href='about/privacy', data-readme-close='data-readme-close', class='internal-home') 点击这里查看

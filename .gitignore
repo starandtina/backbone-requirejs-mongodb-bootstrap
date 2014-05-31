@@ -5,3 +5,4 @@ app/report
 dist
 
 npm-debug.log
+devperf

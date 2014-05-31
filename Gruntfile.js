@@ -67,8 +67,7 @@ module.exports = function (grunt) {
     connect: {
       options: {
         port: grunt.option('port') || SERVER_PORT,
-        // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
+        hostname: '0.0.0.0'
       },
       livereload: {
         options: {
@@ -503,6 +502,17 @@ module.exports = function (grunt) {
         }]
       }
     },
+    devperf: {
+      options: {
+        urls: [
+          'http://localhost:<%= connect.options.port %>'
+        ],
+        numberOfRuns: 5,
+        timeout: 120,
+        openResults: true,
+        resultsFolder: './devperf'
+      }
+    }
   });
 
   grunt.registerTask('serve', function (target) {
@@ -514,6 +524,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'connect:livereload',
       'open',
+      'devperf',
       'notify:server',
       'watch'
     ]);

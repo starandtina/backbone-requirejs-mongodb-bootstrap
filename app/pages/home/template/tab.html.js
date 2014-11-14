@@ -43,7 +43,7 @@ buf.push("<li class=\"tab-unit\"><a" + (jade.attr("href", "" + (tab.url) + "", t
   }
 }).call(this);
 
-buf.push("</ul></div>");}("currentTabId" in locals_for_with?locals_for_with.currentTabId:typeof currentTabId!=="undefined"?currentTabId:undefined,"_t" in locals_for_with?locals_for_with._t:typeof _t!=="undefined"?_t:undefined));;return buf.join("");
+buf.push("</ul></div>");}.call(this,"currentTabId" in locals_for_with?locals_for_with.currentTabId:typeof currentTabId!=="undefined"?currentTabId:undefined,"_t" in locals_for_with?locals_for_with._t:typeof _t!=="undefined"?_t:undefined));;return buf.join("");
 }
 return function (locals) {
 if (locals && locals._t) _t = locals._t.merge(_t);

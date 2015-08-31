@@ -41,7 +41,7 @@ define([
     showReadME: function () {
       ReadMe($('[data-readme]')[0], {
         //'show.count': 2,
-        expires: 'August 1, 2014'
+        expires: 'August 1, 2019'
       });
     }
   });

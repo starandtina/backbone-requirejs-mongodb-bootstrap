@@ -52,7 +52,7 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "start": "(cd node && DEBUG=* PORT=3001 npm start) & grunt serve",
+    "start": "(cd node && env DEBUG='*' PORT='3001' npm start) & grunt serve",
     "test": "grunt test"
   },
   "description": "# Introduction",

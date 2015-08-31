@@ -4,7 +4,7 @@ var yudify = function template(locals) {
 var buf = [];
 var jade_mixins = {};
 var jade_interp;
-;var locals_for_with = (locals || {});(function (currentTabId, _t) {
+;var locals_for_with = (locals || {});(function (_t, currentTabId, undefined) {
 var tabItems = [{id: '1', url: '/dashboard', label: 'Dashboard', 'icon': 'dashboard'}, {url: '/vms', label: 'VMS', id: '2', 'icon': 'bookmark'}, {url: '/gws', label: 'Gateways', id: '3', 'icon': 'bookmark'}, {url: '/services/create', label: 'Services', id: '4', 'icon': 'bookmark'}]
 buf.push("<div class=\"ui-tab\"><ul class=\"tab-list\">");
 // iterate tabItems
@@ -43,7 +43,7 @@ buf.push("<li class=\"tab-unit\"><a" + (jade.attr("href", "" + (tab.url) + "", t
   }
 }).call(this);
 
-buf.push("</ul></div>");}.call(this,"currentTabId" in locals_for_with?locals_for_with.currentTabId:typeof currentTabId!=="undefined"?currentTabId:undefined,"_t" in locals_for_with?locals_for_with._t:typeof _t!=="undefined"?_t:undefined));;return buf.join("");
+buf.push("</ul></div>");}.call(this,"_t" in locals_for_with?locals_for_with._t:typeof _t!=="undefined"?_t:undefined,"currentTabId" in locals_for_with?locals_for_with.currentTabId:typeof currentTabId!=="undefined"?currentTabId:undefined,"undefined" in locals_for_with?locals_for_with.undefined:typeof undefined!=="undefined"?undefined:undefined));;return buf.join("");
 }
 return function (locals) {
 if (locals && locals._t) _t = locals._t.merge(_t);

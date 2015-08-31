@@ -31,18 +31,18 @@ We could takes the screenshot comparison approach to testing CSS, and then compa
 
 # Install
 
-    npm install -g grunt-cli
-    npm install
-    cd node && npm install
+    npm i -g grunt-cli
+    npm i
+    cd node && npm i
+
+# Mongodb
+
+    mongod --dbpath ~/test/mongodb
 
 # Run
     
     npm start           // developement
     grunt serve:dist   // production
-
-## Mongodb
-
-    mongod --dbpath ~/test/mongodb
 
 # Build
 

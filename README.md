@@ -14,7 +14,7 @@ This repo contains an example for setting up your frontend JavaScript code base 
 
 ## Unit Testing
 
-* [Mocha](http://visionmedia.github.io/mocha/): Mocha is a feature-rich JavaScript test framework running on node.js and the browser, making asynchronous testing simple and fun.
+* [Mocha](http://mochajs.org/): Mocha is a feature-rich JavaScript test framework running on node.js and the browser, making asynchronous testing simple and fun.
 * [Chai](http://chaijs.com/): Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 * [JSDom](https://github.com/tmpvar/jsdom): An open-source library that creates a fake DOM, including fake events. 
 
